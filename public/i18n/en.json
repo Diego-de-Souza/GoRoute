@@ -1,0 +1,276 @@
+{
+  "APP": {
+    "TITLE": "GoRoute — data-driven career roadmap"
+  },
+  "HOME": {
+    "SKIP": "Skip to content",
+    "GRAPH_ARIA": "Interactive career map — drag nodes and use scroll to zoom.",
+    "WORDMARK_ARIA": "GoRoute — home",
+    "SECTIONS_ARIA": "Sections",
+    "NAV": {
+      "PAIN": "Pain",
+      "CONTEXT": "Context",
+      "AUDIENCE": "Who",
+      "CTA": "Join",
+      "QUOTES": "Voices"
+    },
+    "GRAPH_LIVE": "graph active",
+    "RAIL_HINT": "drag · zoom · explore",
+    "HERO": {
+      "GHOST": "trajectory",
+      "SOLID": "Your next",
+      "ACCENT": "decision",
+      "LEDE": "A recommendation engine that matches <em>open roles right now</em> with <em>real promotion paths</em> — not a generic course list.",
+      "CTA_LEGEND": "Map legend",
+      "CTA_AUDIENCE": "Target audience",
+      "MICRO": "The graph covers the entire screen — use empty space or this panel to interact."
+    },
+    "TICKER": {
+      "N": "48M",
+      "T": "professionals in Brazil TAM · data-driven roadmap"
+    },
+    "PAIN": {
+      "LABEL": "01 · friction",
+      "TITLE": "The pain in numbers",
+      "S1": "without clarity on the <strong>next 3 steps</strong> (Gartner, 2023).",
+      "S2": "millennials and Gen Z anxious due to lack of direction.",
+      "S3": "average time to switch fields · an estimated <strong>R$ 40k+</strong> lost to indecision."
+    },
+    "CONTEXT": {
+      "LABEL": "02 · map",
+      "TITLE": "The background is the product",
+      "P": "Each color is a branch. From the center, areas and specializations emerge — pull a node and watch the whole branch reorganize.",
+      "LEGEND_ARIA": "Graph color legend",
+      "LEGEND": {
+        "START": "Start",
+        "TECH": "Tech",
+        "DATA": "Data",
+        "PRODUCT": "Product",
+        "BUSINESS": "Business",
+        "HEALTH": "Health",
+        "CREATIVE": "Creative"
+      }
+    },
+    "AUDIENCE": {
+      "LABEL": "03 · reach",
+      "TITLE": "Target audience",
+      "DEK": "TAM · SAM · SOM — data narrative, not self-promo.",
+      "CARDS": {
+        "YOUNG_T": "Young 18–25",
+        "YOUNG_P": "First job, internship, or switching majors.",
+        "EARLY_T": "Early 25–35",
+        "EARLY_P": "Stagnation, promotion, or stack switch.",
+        "LEAD_T": "Leadership 35–50",
+        "LEAD_P": "Director-level growth, org politics, and technical depth.",
+        "RELOC_T": "Repositioning",
+        "RELOC_P": "Career transition — e.g., admin → data."
+      },
+      "METERS": {
+        "TAM": "Total TAM",
+        "SAM": "Digital SAM",
+        "SOM": "Year 1 SOM"
+      },
+      "TABLE": {
+        "SEGMENT": "Segment",
+        "TAM": "TAM",
+        "BEHAVIOR": "Behavior",
+        "R1S": "Young (18–25)",
+        "R1B": "First job, internship, or course transition.",
+        "R2S": "Early career (25–35)",
+        "R2B": "Stagnation, promotion, or stack change.",
+        "R3S": "Managers & leaders (35–50)",
+        "R3B": "Move toward director roles; politics and technical gaps.",
+        "R4S": "Repositioning / transition",
+        "R4B": "Laid off or switching fields (e.g., admin → data).",
+        "PILL_YEAR": "4M / year"
+      }
+    },
+    "CTA_SECTION": {
+      "LABEL": "04 · invite",
+      "TITLE": "Call to action — join now",
+      "PRO_TITLE": "If you’re a professional:",
+      "PRO_CTA": "Create your roadmap for free",
+      "PRO_DEK": "Show your skills, track your growth, and let the right opportunities find you.",
+      "CO_TITLE": "If you’re a company:",
+      "CO_CTA": "Post your first job",
+      "CO_DEK": "Test match quality. When you’re ready to automate, talk to us about API integration."
+    },
+    "QUOTES_SECTION": {
+      "LABEL": "05 · pulse",
+      "TITLE": "Lines that tell our story",
+      "Q1": "Stop sending résumés into the void. Build your professional roadmap and let the right companies find you. GoRoute — your map, your opportunities.",
+      "Q2": "Tired of résumés that don’t reflect reality? Post jobs manually or integrate via API. Meet GoRoute.",
+      "Q3": "GoRoute was born from a real pain: professionals without direction and companies without real visibility into skills. We built the bridge.",
+      "NOTE": "Use these snippets on social — the full story lives on About."
+    },
+    "FOOTER": "GoRoute — career paths with market evidence.<span class=\"site-footer__slash\" aria-hidden=\"true\">/</span>No guesswork."
+  },
+  "ABOUT": {
+    "SKIP": "Skip to About content",
+    "WORDMARK_ARIA": "GoRoute — top of content on this page",
+    "DOCK_ARIA": "About page sections",
+    "DOCK": {
+      "ORIGIN": "Origin",
+      "WHAT": "Product",
+      "AUDIENCE": "Who",
+      "FEATURES": "Features",
+      "CONNECTION": "Match",
+      "VISION": "Vision"
+    },
+    "HERO": {
+      "LABEL": "Company",
+      "TITLE": "About GoRoute",
+      "SUBTITLE": "Where your professional roadmap meets real opportunities",
+      "LEDE": "GoRoute <em>connects career trajectory planning</em> with <em>direct market access</em> — full-time or freelance — through transparent, skills-based matching.",
+      "CTA_HOME": "See the invite on the home page"
+    },
+    "ORIGIN": {
+      "LABEL": "01 · origin",
+      "TITLE": "Our origin: born from a real market pain",
+      "Q": "Have you ever felt your career is scattered across too many places?",
+      "P1": "LinkedIn for the résumé, the portfolio for skills, WhatsApp for contacts, openings across dozens of sites… and nowhere that ties career trajectory planning to direct market connection — whether for a steady job or freelance work.",
+      "P2": "Companies suffer too: hours filtering résumés that don’t reflect what people can actually do. Great talent is missed because only shiny titles are visible, not real skills.",
+      "P3": "That’s how GoRoute was born.",
+      "P4": "No more “just another jobs portal.” No more lonely goal trackers. GoRoute connects your professional evolution map to the right companies — intelligently, transparently, and at scale."
+    },
+    "WHAT": {
+      "LABEL": "02 · product",
+      "TITLE": "What is GoRoute?",
+      "P1": "GoRoute is an ecosystem where professionals build a career roadmap (milestones, skills, objectives) and companies discover that talent through matching grounded in real competencies.",
+      "Q_INTRO": "Think of it like this:",
+      "QUOTE": "A Waze for your professional life — with real opportunities appearing along the route.",
+      "P_PRO_INTRO": "If you’re a professional, GoRoute helps you:",
+      "PRO_1": "Map technical and behavioral growth.",
+      "PRO_2": "See progress on a clear timeline.",
+      "PRO_3": "Get discovered by companies looking for what you actually do — not just your job title.",
+      "P_CO_INTRO": "If you’re a company, GoRoute lets you:",
+      "CO_1": "Post full-time or freelance roles manually (simple form).",
+      "CO_2": "Integrate HR systems via dedicated endpoints for automated job creation.",
+      "CO_3": "Tap a talent base organized by real skills — not keyword stuffing."
+    },
+    "AUDIENCE": {
+      "LABEL": "03 · who it’s for",
+      "TITLE": "Who is GoRoute for?",
+      "PRO_TITLE": "For professionals",
+      "CO_TITLE": "For companies",
+      "PRO_1": "People starting out who want a clear roadmap.",
+      "PRO_2": "People switching fields who need to show momentum.",
+      "PRO_3": "Freelancers who want to be found for focused projects.",
+      "PRO_4": "Experienced people tired of blind résumé roulette.",
+      "CO_1": "Startups that need to hire fast.",
+      "CO_2": "Large companies diversifying talent sources.",
+      "CO_3": "HR teams reducing noise in screening.",
+      "CO_4": "Businesses that need an API to sync jobs automatically."
+    },
+    "FEATURES": {
+      "LABEL": "04 · value",
+      "TITLE": "Features that matter",
+      "COL_PRO": "For professionals",
+      "COL_CO": "For companies",
+      "R1_PRO": "Roadmaps with time-based milestones",
+      "R1_CO": "Manual job posts (FT, contractor, freelance)",
+      "R2_PRO": "Skills portfolio with proficiency levels",
+      "R2_CO": "Search talent by specific skills",
+      "R3_PRO": "Public profile with an evolution timeline",
+      "R3_CO": "REST API endpoints for bulk job creation",
+      "R4_PRO": "Notifications when roles match your trajectory",
+      "R4_CO": "Control panel with match metrics",
+      "R5_PRO": "Project and certification history",
+      "R5_CO": "Integration with existing HR stacks"
+    },
+    "CONNECTION": {
+      "LABEL": "05 · flow",
+      "TITLE": "How professionals and companies connect",
+      "S1": "The professional builds a roadmap — interests, skills, short/medium-term goals.",
+      "S2": "The company posts a role — required skills, contract type, location (or remote).",
+      "S3": "GoRoute’s engine crosses signals — surfacing people who have or are building the exact skills requested.",
+      "S4": "Matches emerge organically — both sides get notified and can start contact inside the platform.",
+      "NOTE": "Differentiator: even without 100% of a role’s skills, the roadmap shows momentum — and companies can bet on potential."
+    },
+    "DUAL": {
+      "LABEL": "06 · scale",
+      "TITLE": "Our edge: dual routes (manual + API)",
+      "P1": "Every company has its moment and stack — so we offer two ways to publish jobs:",
+      "MANUAL_TITLE": "Manual —",
+      "MANUAL": "for smaller teams, one-off hires, or early experiments.",
+      "API_TITLE": "Via endpoint —",
+      "API": "for organizations with HR systems that want automated, secure pushes straight into GoRoute.",
+      "P2": "Start simple; when you scale, plug GoRoute into the workflow you already run — without friction."
+    },
+    "VISION": {
+      "LABEL": "07 · vision",
+      "TITLE": "What we’re building",
+      "DECLARATION": "We want to be the reference point for anyone serious about professional growth across Brazil and Latin America.",
+      "IMAGINA": "Imagine a place where:",
+      "V1": "Someone learning to code can show weekly progress.",
+      "V2": "A seasoned expert can land international freelance work without leaving their roadmap.",
+      "V3": "A tech company fills roles in 48 hours with people who already wield the tools they use.",
+      "TAG": "That’s GoRoute."
+    },
+    "QUOTES": {
+      "LABEL": "08 · social",
+      "TITLE": "Snippets for social",
+      "Q1": "Stop sending résumés into the void. Build your professional roadmap and let the right companies find you. GoRoute — your map, your opportunities.",
+      "Q2": "Tired of résumés that don’t reflect reality? Post jobs manually or integrate via API. Meet GoRoute.",
+      "Q3": "GoRoute was born from a real pain: professionals without direction and companies without real visibility into skills. We built the bridge."
+    },
+    "CLOSING": {
+      "TITLE": "GoRoute — every skill has a path, and every path leads to opportunity.",
+      "P1": "Join us on this journey.",
+      "P2": "Let’s build the future of work — together."
+    }
+  },
+  "FOOTER": {
+    "SITE_ARIA": "Site footer",
+    "NAV_ARIA": "On-page shortcuts",
+    "EXPLORE": "Explore",
+    "TABS_LABEL": "Menu tabs",
+    "TABS_ARIA": "Same sections as the side menu",
+    "SOCIAL_TITLE": "Social",
+    "SOCIAL": {
+      "GITHUB": "GitHub",
+      "LINKEDIN": "LinkedIn",
+      "INSTAGRAM": "Instagram",
+      "X": "X"
+    },
+    "BADGE": "Interactive map",
+    "HINT": "Drag nodes · zoom · reveal branches",
+    "COPYRIGHT": "© {{year}} GoRoute — data-informed career paths",
+    "BACK_TOP": "Back to top"
+  },
+  "MENU": {
+    "ARIA": "Side menu",
+    "PIN": "Pin menu",
+    "UNPIN": "Unpin menu",
+    "PAGES_ARIA": "Pages",
+    "NAV": {
+      "HOME": "Home",
+      "ABOUT": "About",
+      "MAP": "Map",
+      "AUDIENCE": "Audience"
+    },
+    "WIDGET_ARIA": "Weather & clock",
+    "SOCIAL_ARIA": "Social networks",
+    "SETTINGS": {
+      "TITLE": "Preferences",
+      "THEME": "Theme",
+      "THEME_LIGHT": "Light",
+      "THEME_DARK": "Dark",
+      "LANG": "Language",
+      "LANG_PT": "Portuguese",
+      "LANG_EN": "English",
+      "LANG_ES": "Spanish",
+      "LANG_DE": "German"
+    }
+  },
+  "WEATHER": {
+    "LOADING": "Loading weather…",
+    "UNAVAILABLE": "Weather unavailable",
+    "WIND": "wind",
+    "CODE": "code",
+    "FORMAT": "{{temp}} · wind {{wind}} · code {{code}}",
+    "TEMP_UNIT": "°C",
+    "WIND_UNIT": "km/h"
+  }
+}
+

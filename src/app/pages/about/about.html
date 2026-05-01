@@ -1,0 +1,181 @@
+<a class="skip hit" href="#about-main">{{ 'ABOUT.SKIP' | translate }}</a>
+
+<app-side-menu class="hit"></app-side-menu>
+
+<div class="stage">
+  <div class="stage__veil" aria-hidden="true"></div>
+  <div class="stage__scan" aria-hidden="true"></div>
+
+  <div class="film">
+    <header class="dock hit">
+      <a class="dock__wordmark" href="#about-main" [attr.aria-label]="'ABOUT.WORDMARK_ARIA' | translate">GoRoute</a>
+      <nav class="dock__links" [attr.aria-label]="'ABOUT.DOCK_ARIA' | translate">
+        <a routerLink="/about" fragment="origem">{{ 'ABOUT.DOCK.ORIGIN' | translate }}</a>
+        <a routerLink="/about" fragment="o-que-e">{{ 'ABOUT.DOCK.WHAT' | translate }}</a>
+        <a routerLink="/about" fragment="publico">{{ 'ABOUT.DOCK.AUDIENCE' | translate }}</a>
+        <a routerLink="/about" fragment="funcionalidades">{{ 'ABOUT.DOCK.FEATURES' | translate }}</a>
+        <a routerLink="/about" fragment="visao">{{ 'ABOUT.DOCK.VISION' | translate }}</a>
+      </nav>
+    </header>
+
+    <main id="about-main" class="strip">
+      <section class="fold fold--hero" aria-labelledby="about-hero-title">
+        <p class="fold__label">{{ 'ABOUT.HERO.LABEL' | translate }}</p>
+        <h1 id="about-hero-title" class="fold__title fold__title--wide">{{ 'ABOUT.HERO.TITLE' | translate }}</h1>
+        <p class="fold__dek fold__dek--hero">{{ 'ABOUT.HERO.SUBTITLE' | translate }}</p>
+        <div class="hit panel panel--glass hero-panel">
+          <p class="lede" [innerHTML]="'ABOUT.HERO.LEDE' | translate"></p>
+          <div class="actions">
+            <a class="chip chip--fill" routerLink="/" fragment="convite">{{ 'ABOUT.HERO.CTA_HOME' | translate }}</a>
+          </div>
+        </div>
+      </section>
+
+      <section id="origem" class="fold">
+        <div class="fold__label">{{ 'ABOUT.ORIGIN.LABEL' | translate }}</div>
+        <h2 class="fold__title">{{ 'ABOUT.ORIGIN.TITLE' | translate }}</h2>
+        <div class="hit prose">
+          <p class="pull">{{ 'ABOUT.ORIGIN.Q' | translate }}</p>
+          <p>{{ 'ABOUT.ORIGIN.P1' | translate }}</p>
+          <p>{{ 'ABOUT.ORIGIN.P2' | translate }}</p>
+          <p>{{ 'ABOUT.ORIGIN.P3' | translate }}</p>
+          <p>{{ 'ABOUT.ORIGIN.P4' | translate }}</p>
+        </div>
+      </section>
+
+      <section id="o-que-e" class="fold fold--alt">
+        <div class="fold__label">{{ 'ABOUT.WHAT.LABEL' | translate }}</div>
+        <h2 class="fold__title">{{ 'ABOUT.WHAT.TITLE' | translate }}</h2>
+        <div class="hit prose">
+          <p>{{ 'ABOUT.WHAT.P1' | translate }}</p>
+          <p class="micro-quote">{{ 'ABOUT.WHAT.Q_INTRO' | translate }}</p>
+          <blockquote class="quote-block">
+            {{ 'ABOUT.WHAT.QUOTE' | translate }}
+          </blockquote>
+          <p>{{ 'ABOUT.WHAT.P_PRO_INTRO' | translate }}</p>
+          <ul class="tick-list">
+            <li>{{ 'ABOUT.WHAT.PRO_1' | translate }}</li>
+            <li>{{ 'ABOUT.WHAT.PRO_2' | translate }}</li>
+            <li>{{ 'ABOUT.WHAT.PRO_3' | translate }}</li>
+          </ul>
+          <p>{{ 'ABOUT.WHAT.P_CO_INTRO' | translate }}</p>
+          <ul class="tick-list">
+            <li>{{ 'ABOUT.WHAT.CO_1' | translate }}</li>
+            <li>{{ 'ABOUT.WHAT.CO_2' | translate }}</li>
+            <li>{{ 'ABOUT.WHAT.CO_3' | translate }}</li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="publico" class="fold">
+        <div class="fold__label">{{ 'ABOUT.AUDIENCE.LABEL' | translate }}</div>
+        <h2 class="fold__title">{{ 'ABOUT.AUDIENCE.TITLE' | translate }}</h2>
+        <div class="hit dual-grid">
+          <article class="panel panel--ink audience-card">
+            <h3><span class="audience-card__ico" aria-hidden="true">🧭</span> {{ 'ABOUT.AUDIENCE.PRO_TITLE' | translate }}</h3>
+            <ul class="tick-list">
+              <li>{{ 'ABOUT.AUDIENCE.PRO_1' | translate }}</li>
+              <li>{{ 'ABOUT.AUDIENCE.PRO_2' | translate }}</li>
+              <li>{{ 'ABOUT.AUDIENCE.PRO_3' | translate }}</li>
+              <li>{{ 'ABOUT.AUDIENCE.PRO_4' | translate }}</li>
+            </ul>
+          </article>
+          <article class="panel panel--ink audience-card audience-card--co">
+            <h3><span class="audience-card__ico" aria-hidden="true">🏢</span> {{ 'ABOUT.AUDIENCE.CO_TITLE' | translate }}</h3>
+            <ul class="tick-list">
+              <li>{{ 'ABOUT.AUDIENCE.CO_1' | translate }}</li>
+              <li>{{ 'ABOUT.AUDIENCE.CO_2' | translate }}</li>
+              <li>{{ 'ABOUT.AUDIENCE.CO_3' | translate }}</li>
+              <li>{{ 'ABOUT.AUDIENCE.CO_4' | translate }}</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section id="funcionalidades" class="fold fold--alt">
+        <div class="fold__label">{{ 'ABOUT.FEATURES.LABEL' | translate }}</div>
+        <h2 class="fold__title">{{ 'ABOUT.FEATURES.TITLE' | translate }}</h2>
+        <div class="hit scroll-panel">
+          <table class="matrix">
+            <thead>
+              <tr>
+                <th scope="col">{{ 'ABOUT.FEATURES.COL_PRO' | translate }}</th>
+                <th scope="col">{{ 'ABOUT.FEATURES.COL_CO' | translate }}</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td [attr.data-label]="'ABOUT.FEATURES.COL_PRO' | translate">{{ 'ABOUT.FEATURES.R1_PRO' | translate }}</td>
+                <td [attr.data-label]="'ABOUT.FEATURES.COL_CO' | translate">{{ 'ABOUT.FEATURES.R1_CO' | translate }}</td>
+              </tr>
+              <tr>
+                <td [attr.data-label]="'ABOUT.FEATURES.COL_PRO' | translate">{{ 'ABOUT.FEATURES.R2_PRO' | translate }}</td>
+                <td [attr.data-label]="'ABOUT.FEATURES.COL_CO' | translate">{{ 'ABOUT.FEATURES.R2_CO' | translate }}</td>
+              </tr>
+              <tr>
+                <td [attr.data-label]="'ABOUT.FEATURES.COL_PRO' | translate">{{ 'ABOUT.FEATURES.R3_PRO' | translate }}</td>
+                <td [attr.data-label]="'ABOUT.FEATURES.COL_CO' | translate">{{ 'ABOUT.FEATURES.R3_CO' | translate }}</td>
+              </tr>
+              <tr>
+                <td [attr.data-label]="'ABOUT.FEATURES.COL_PRO' | translate">{{ 'ABOUT.FEATURES.R4_PRO' | translate }}</td>
+                <td [attr.data-label]="'ABOUT.FEATURES.COL_CO' | translate">{{ 'ABOUT.FEATURES.R4_CO' | translate }}</td>
+              </tr>
+              <tr>
+                <td [attr.data-label]="'ABOUT.FEATURES.COL_PRO' | translate">{{ 'ABOUT.FEATURES.R5_PRO' | translate }}</td>
+                <td [attr.data-label]="'ABOUT.FEATURES.COL_CO' | translate">{{ 'ABOUT.FEATURES.R5_CO' | translate }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="conexao" class="fold">
+        <div class="fold__label">{{ 'ABOUT.CONNECTION.LABEL' | translate }}</div>
+        <h2 class="fold__title">{{ 'ABOUT.CONNECTION.TITLE' | translate }}</h2>
+        <ol class="hit step-list">
+          <li><span class="step-list__n">1</span><span class="step-list__t">{{ 'ABOUT.CONNECTION.S1' | translate }}</span></li>
+          <li><span class="step-list__n">2</span><span class="step-list__t">{{ 'ABOUT.CONNECTION.S2' | translate }}</span></li>
+          <li><span class="step-list__n">3</span><span class="step-list__t">{{ 'ABOUT.CONNECTION.S3' | translate }}</span></li>
+          <li><span class="step-list__n">4</span><span class="step-list__t">{{ 'ABOUT.CONNECTION.S4' | translate }}</span></li>
+        </ol>
+        <p class="hit note">{{ 'ABOUT.CONNECTION.NOTE' | translate }}</p>
+      </section>
+
+      <section id="rota-dupla" class="fold fold--alt">
+        <div class="fold__label">{{ 'ABOUT.DUAL.LABEL' | translate }}</div>
+        <h2 class="fold__title">{{ 'ABOUT.DUAL.TITLE' | translate }}</h2>
+        <div class="hit prose">
+          <p>{{ 'ABOUT.DUAL.P1' | translate }}</p>
+          <ul class="tick-list">
+            <li><strong>{{ 'ABOUT.DUAL.MANUAL_TITLE' | translate }}</strong> {{ 'ABOUT.DUAL.MANUAL' | translate }}</li>
+            <li><strong>{{ 'ABOUT.DUAL.API_TITLE' | translate }}</strong> {{ 'ABOUT.DUAL.API' | translate }}</li>
+          </ul>
+          <p>{{ 'ABOUT.DUAL.P2' | translate }}</p>
+        </div>
+      </section>
+
+      <section id="visao" class="fold">
+        <div class="fold__label">{{ 'ABOUT.VISION.LABEL' | translate }}</div>
+        <h2 class="fold__title">{{ 'ABOUT.VISION.TITLE' | translate }}</h2>
+        <p class="fold__dek">{{ 'ABOUT.VISION.DECLARATION' | translate }}</p>
+        <p class="hit vision-intro">{{ 'ABOUT.VISION.IMAGINA' | translate }}</p>
+        <ul class="hit tick-list tick-list--vision">
+          <li>{{ 'ABOUT.VISION.V1' | translate }}</li>
+          <li>{{ 'ABOUT.VISION.V2' | translate }}</li>
+          <li>{{ 'ABOUT.VISION.V3' | translate }}</li>
+        </ul>
+        <p class="hit vision-tag">{{ 'ABOUT.VISION.TAG' | translate }}</p>
+      </section>
+
+      <section id="encerramento" class="fold fold--closing" aria-labelledby="closing-title">
+        <div class="hit panel panel--glass closing-panel">
+          <h2 id="closing-title" class="closing-panel__title">{{ 'ABOUT.CLOSING.TITLE' | translate }}</h2>
+          <p>{{ 'ABOUT.CLOSING.P1' | translate }}</p>
+          <p class="closing-panel__accent">{{ 'ABOUT.CLOSING.P2' | translate }}</p>
+        </div>
+      </section>
+
+      <app-footer class="hit"></app-footer>
+    </main>
+  </div>
+</div>

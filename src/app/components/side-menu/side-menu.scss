@@ -1,0 +1,161 @@
+.side {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 45;
+  height: 100dvh;
+  width: 64px;
+  border-right: 1px solid var(--stroke);
+  background: var(--surface-1);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  pointer-events: auto;
+  transition: width 0.18s ease;
+  overflow: hidden;
+}
+
+.side--open {
+  width: min(340px, 86vw);
+}
+
+.side__inner {
+  height: 100%;
+  display: grid;
+  grid-template-rows: auto auto 1fr auto auto;
+  gap: 1rem;
+  padding: 0.75rem 0.75rem 0.9rem;
+}
+
+.side__pin {
+  justify-self: end;
+  width: 36px;
+  height: 36px;
+  border-radius: 4px;
+  border: 1px solid var(--stroke);
+  background: var(--hover-1);
+  cursor: pointer;
+}
+.side__pin:hover {
+  border-color: var(--hover-2);
+}
+.side__pin:focus-visible {
+  outline: 2px solid var(--mint);
+  outline-offset: 3px;
+}
+.side__pin-ic {
+  display: block;
+  margin: 0 auto;
+  width: 14px;
+  height: 14px;
+  background: linear-gradient(135deg, var(--mint), var(--signal));
+  clip-path: polygon(30% 0, 70% 0, 70% 65%, 50% 100%, 30% 65%);
+}
+
+.side__brand {
+  width: 40px;
+  height: 40px;
+  border-radius: 6px;
+  display: grid;
+  place-items: center;
+  font-family: var(--font-d);
+  font-weight: 900;
+  letter-spacing: -0.06em;
+  color: var(--bg);
+  background: var(--mint);
+  box-shadow: 0 18px 48px var(--mint-shadow);
+}
+
+.side__nav {
+  display: grid;
+  gap: 0.35rem;
+  align-content: start;
+}
+.side__nav a {
+  display: block;
+  padding: 0.55rem 0.7rem;
+  border-radius: 4px;
+  text-decoration: none;
+  font-family: var(--font-d);
+  font-weight: 800;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--fg);
+  border: 1px solid transparent;
+}
+.side__nav a:hover {
+  border-color: var(--hover-2);
+  background: var(--hover-1);
+}
+.side__nav a:focus-visible {
+  outline: 2px solid var(--mint);
+  outline-offset: 2px;
+}
+
+.side__widget {
+  border: 1px solid var(--stroke);
+  border-radius: 4px;
+  background: var(--surface-2);
+  padding: 0.75rem 0.85rem;
+}
+.wc__time {
+  font-family: var(--font-d);
+  font-weight: 900;
+  font-size: 1.65rem;
+  letter-spacing: -0.04em;
+}
+.wc__date {
+  margin-top: 0.1rem;
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+.wc__date--spaced {
+  margin-top: 0.65rem;
+}
+.wc__weather {
+  margin-top: 0.55rem;
+  font-size: 0.82rem;
+  color: var(--color-muted);
+}
+.wc__weather select {
+  width: 100%;
+  padding: 0.45rem 0.55rem;
+  border-radius: 4px;
+  border: 1px solid var(--stroke);
+  background: var(--surface-1);
+  color: var(--fg);
+  font: inherit;
+}
+.wc__weather select:focus-visible {
+  outline: 2px solid var(--mint);
+  outline-offset: 2px;
+}
+
+.side__social {
+  display: grid;
+  gap: 0.3rem;
+}
+.soc {
+  display: inline-flex;
+  padding: 0.5rem 0.65rem;
+  border-radius: 4px;
+  text-decoration: none;
+  color: var(--muted);
+  border: 1px solid var(--stroke);
+  background: var(--hover-1);
+  font-size: 0.82rem;
+  font-weight: 650;
+}
+.soc:hover {
+  color: var(--fg);
+  border-color: var(--hover-2);
+}
+
+/* When menu collapsed, hide text-y areas visually */
+.side:not(.side--open) .side__nav,
+.side:not(.side--open) .side__widget,
+.side:not(.side--open) .side__social {
+  opacity: 0;
+  pointer-events: none;
+}
+
