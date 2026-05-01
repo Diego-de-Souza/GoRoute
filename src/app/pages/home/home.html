@@ -1,0 +1,181 @@
+<a class="skip hit" href="#conteudo">Pular para o conteúdo</a>
+
+    <app-side-menu class="hit"></app-side-menu>
+    <div class="stage">
+    <!-- Grafo: tela cheia, sempre atrás do véu + cópia -->
+    <div
+        #networkHost
+        id="mynetwork"
+        class="stage__graph"
+        role="application"
+        aria-label="Mapa interativo de carreiras — arraste os nós e use o scroll para zoom."
+    ></div>
+
+    <div class="stage__veil" aria-hidden="true"></div>
+    <div class="stage__scan" aria-hidden="true"></div>
+
+    <div class="film">
+
+        <header class="dock hit">
+        <a class="dock__wordmark" href="/" aria-label="GoRoute — início">GoRoute</a>
+        <nav class="dock__links" aria-label="Seções">
+            <a href="#numeros">Dor</a>
+            <a href="#contexto">Contexto</a>
+            <a href="#publico">Quem</a>
+        </nav>
+        <span class="dock__live" aria-hidden="true"><span class="dock__pulse"></span> grafo ativo</span>
+        </header>
+
+        <aside class="rail" aria-hidden="true">
+        <span class="rail__text">arraste · zoom · explore</span>
+        </aside>
+
+        <main id="conteudo" class="strip">
+        <section class="fold fold--hero" aria-labelledby="hero-title">
+            <h1 id="hero-title" class="megatype">
+            <span class="megatype__row megatype__row--ghost" aria-hidden="true">trajetória</span>
+            <span class="megatype__row megatype__row--solid">Sua próxima</span>
+            <span class="megatype__row megatype__row--accent">decisão</span>
+            </h1>
+
+            <div class="hit bleed bleed--hero panel panel--glass">
+            <p class="lede">
+                Motor de recomendação que cruza <em>vagas abertas agora</em> com <em>trajetórias reais</em> de promoção —
+                não mais lista genérica de cursos.
+            </p>
+            <div class="actions">
+                <a class="chip chip--fill" href="#legend">Legenda do mapa</a>
+                <a class="chip chip--ghost" href="#publico">Público-alvo</a>
+            </div>
+            <p class="micro">
+                O grafo cobre a tela inteira — use os espaços vazios ou esta área para interagir.
+            </p>
+            </div>
+
+            <div class="hit ticker panel panel--ink">
+            <span class="ticker__n">48M</span>
+            <span class="ticker__t">profissionais no TAM Brasil · roadmap orientado a dados</span>
+            </div>
+        </section>
+
+        <section id="numeros" class="fold fold--pain" aria-labelledby="pain-h">
+            <div class="fold__label">01 · atrito</div>
+            <h2 id="pain-h" class="fold__title">A dor em números</h2>
+
+            <div class="hit stats-wall">
+            <article class="stat-block stat-block--xl">
+                <span class="stat-block__n">75%</span>
+                <p class="stat-block__p">
+                sem clareza nos <strong>3 próximos passos</strong> (Gartner, 2023).
+                </p>
+            </article>
+            <article class="stat-block">
+                <span class="stat-block__n">62%</span>
+                <p class="stat-block__p">millennials e Gen Z com ansiedade por falta de direção.</p>
+            </article>
+            <article class="stat-block stat-block--warm">
+                <span class="stat-block__n">18 mo</span>
+                <p class="stat-block__p">média para mudar de área · estimativa <strong>R$ 40k+</strong> perdidos na indecisão.</p>
+            </article>
+            </div>
+        </section>
+
+        <section id="contexto" class="fold fold--context" aria-labelledby="ctx-h">
+            <div class="fold__label">02 · mapa</div>
+            <div class="hit ctx-grid">
+            <div class="ctx-copy">
+                <h2 id="ctx-h" class="fold__title">O fundo é o produto</h2>
+                <p>
+                Cada cor é um ramo. Do centro saem áreas e especializações — puxe um nó e veja a ramificação inteira se
+                reorganizar.
+                </p>
+            </div>
+            <div id="legend" class="legend-board hit" aria-label="Legenda das cores do grafo">
+                <span class="lg lg--start">Partida</span>
+                <span class="lg lg--tech">Tech</span>
+                <span class="lg lg--dados">Dados</span>
+                <span class="lg lg--produto">Produto</span>
+                <span class="lg lg--negocios">Negócios</span>
+                <span class="lg lg--saude">Saúde</span>
+                <span class="lg lg--criativo">Criativo</span>
+            </div>
+            </div>
+        </section>
+
+        <section id="publico" class="fold fold--audience" aria-labelledby="aud-h">
+            <div class="fold__label">03 · alcance</div>
+            <h2 id="aud-h" class="fold__title">Público-alvo</h2>
+            <p class="fold__dek">TAM · SAM · SOM — narrativa em dados, não em autopropaganda.</p>
+
+            <div class="hit snap-row" tabindex="0">
+            <article class="snap-card">
+                <h3>Jovens 18–25</h3>
+                <span class="snap-card__tag">14M</span>
+                <p>Primeiro emprego, estágio ou troca de curso.</p>
+            </article>
+            <article class="snap-card">
+                <h3>Início 25–35</h3>
+                <span class="snap-card__tag">22M</span>
+                <p>Estagnação, promoção ou mudança de stack.</p>
+            </article>
+            <article class="snap-card">
+                <h3>Liderança 35–50</h3>
+                <span class="snap-card__tag">8M</span>
+                <p>Diretoria, política organizacional e técnica.</p>
+            </article>
+            <article class="snap-card snap-card--emph">
+                <h3>Recolocação</h3>
+                <span class="snap-card__tag">4M/ano</span>
+                <p>Transição de área — ex. adm → dados.</p>
+            </article>
+            </div>
+
+            <div class="hit meter-grid">
+            <div class="meter"><span class="meter__k">TAM total</span><span class="meter__v">~48M</span></div>
+            <div class="meter"><span class="meter__k">SAM digital</span><span class="meter__v">~15M</span></div>
+            <div class="meter"><span class="meter__k">SOM ano 1</span><span class="meter__v">150k</span></div>
+            </div>
+
+            <div class="hit scroll-panel">
+            <table class="matrix">
+                <thead>
+                <tr>
+                    <th scope="col">Segmento</th>
+                    <th scope="col">TAM</th>
+                    <th scope="col">Comportamento</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td data-label="Segmento">Jovens (18–25)</td>
+                    <td data-label="TAM"><span class="matrix__pill">14M</span></td>
+                    <td data-label="Comportamento">Primeiro emprego, estágio ou transição de curso.</td>
+                </tr>
+                <tr>
+                    <td data-label="Segmento">Início de carreira (25–35)</td>
+                    <td data-label="TAM"><span class="matrix__pill">22M</span></td>
+                    <td data-label="Comportamento">Estagnação, promoção ou mudança de stack.</td>
+                </tr>
+                <tr>
+                    <td data-label="Segmento">Gestores e líderes (35–50)</td>
+                    <td data-label="TAM"><span class="matrix__pill">8M</span></td>
+                    <td data-label="Comportamento">Evoluir para diretorias; gaps de política e técnica.</td>
+                </tr>
+                <tr>
+                    <td data-label="Segmento">Recolocação / transição</td>
+                    <td data-label="TAM"><span class="matrix__pill">4M / ano</span></td>
+                    <td data-label="Comportamento">Demitidos ou migrando de área (ex.: adm → dados).</td>
+                </tr>
+                </tbody>
+            </table>
+            </div>
+        </section>
+
+        <footer class="foot hit">
+            <p>
+            GoRoute — trajetórias com evidência de mercado.<span class="foot__slash" aria-hidden="true">/</span>Sem achismo.
+            </p>
+        </footer>
+        </main>
+    </div>
+</div>

@@ -1,0 +1,44 @@
+<aside
+  class="side"
+  [class.side--open]="menuOpen"
+  (mouseenter)="onMenuEnter()"
+  (mouseleave)="onMenuLeave()"
+  aria-label="Menu lateral"
+>
+  <div class="side__inner">
+    <button
+      type="button"
+      class="side__pin"
+      (click)="togglePin()"
+      [attr.aria-pressed]="menuPinned"
+      [attr.aria-label]="menuPinned ? 'Desafixar menu' : 'Fixar menu'"
+    >
+      <span class="side__pin-ic" aria-hidden="true"></span>
+    </button>
+
+    <div class="side__brand" aria-hidden="true">GR</div>
+
+    <nav class="side__nav" aria-label="Páginas">
+      <a href="#conteudo">Início</a>
+      <a href="#numeros">Dor</a>
+      <a href="#contexto">Mapa</a>
+      <a href="#publico">Público</a>
+    </nav>
+
+    <section class="side__widget" aria-label="Weather & Clock">
+      <div class="wc">
+        <div class="wc__time">{{ clockTime }}</div>
+        <div class="wc__date">{{ clockDate }}</div>
+        <div class="wc__weather">{{ weatherLabel }}</div>
+      </div>
+    </section>
+
+    <section class="side__social" aria-label="Redes sociais">
+      <a class="soc" href="https://github.com/" target="_blank" rel="noopener">GitHub</a>
+      <a class="soc" href="https://www.linkedin.com/" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="soc" href="https://www.instagram.com/" target="_blank" rel="noopener">Instagram</a>
+      <a class="soc" href="https://x.com/" target="_blank" rel="noopener">X</a>
+    </section>
+  </div>
+</aside>
+
