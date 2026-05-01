@@ -10,11 +10,13 @@ import {
 } from '@angular/core';
 import type { Network } from 'vis-network';
 import { CAREER_EDGES, CAREER_NODES, careerNetworkOptions } from './career-graph.config';
+import { Footer } from '../../components/footer/footer';
 import { SideMenu } from '../../components/side-menu/side-menu';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-home',
-  imports: [SideMenu],
+  imports: [Footer, SideMenu, TranslateModule],
   templateUrl: './home.html',
   styleUrl: './home.scss',
 })

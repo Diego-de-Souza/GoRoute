@@ -2,16 +2,16 @@
 
 :host {
   display: block;
-  --bg: #060607;
-  --fg: #f2f0eb;
-  --muted: #98949a;
-  --dim: #5c595e;
-  --signal: #ff4e33;
-  --mint: #5effd2;
-  --void-panel: rgba(8, 8, 10, 0.82);
-  --stroke: rgba(255, 255, 255, 0.07);
-  --font-d: 'Outfit', system-ui, sans-serif;
-  --font-b: 'Instrument Sans', system-ui, sans-serif;
+  --bg: var(--color-bg);
+  --fg: var(--color-fg);
+  --muted: var(--color-muted);
+  --dim: var(--color-dim);
+  --signal: var(--color-signal);
+  --mint: var(--color-mint);
+  --void-panel: var(--glass);
+  --stroke: var(--color-stroke);
+  --font-d: var(--font-d);
+  --font-b: var(--font-b);
   --side-collapsed: 64px;
 }
 
@@ -67,9 +67,14 @@
   z-index: 2;
   pointer-events: none;
   background:
-    radial-gradient(ellipse 90% 75% at 70% 45%, transparent 0%, rgba(6, 6, 7, 0.55) 55%, rgba(6, 6, 7, 0.92) 100%),
-    radial-gradient(ellipse 55% 45% at 10% 90%, rgba(255, 78, 51, 0.07), transparent 55%),
-    linear-gradient(165deg, rgba(6, 6, 7, 0.25) 0%, transparent 40%);
+    radial-gradient(
+      ellipse 90% 75% at 70% 45%,
+      transparent 0%,
+      rgb(var(--bg-rgb) / 0.40) 55%,
+      rgb(var(--bg-rgb) / 0.84) 100%
+    ),
+    radial-gradient(ellipse 55% 45% at 10% 90%, rgb(255 78 51 / 0.07), transparent 55%),
+    linear-gradient(165deg, rgb(var(--bg-rgb) / 0.18) 0%, transparent 40%);
 }
 
 .stage__scan {
@@ -82,10 +87,23 @@
     0deg,
     transparent,
     transparent 2px,
-    rgba(255, 255, 255, 0.06) 2px,
-    rgba(255, 255, 255, 0.06) 3px
+    rgb(var(--fg-rgb) / 0.06) 2px,
+    rgb(var(--fg-rgb) / 0.06) 3px
   );
   mix-blend-mode: overlay;
+}
+
+/* Só a metade direita recebe eventos no canvas do grafo; à esquerda a roda/touch rolam a página */
+.stage__graph-passive {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 50%;
+  max-width: 50vw;
+  z-index: 2;
+  pointer-events: auto;
+  touch-action: pan-y;
 }
 
 .film {
@@ -213,6 +231,7 @@
 
 .fold {
   position: relative;
+  scroll-margin-top: 5.5rem;
   width: 100%;
   padding: clamp(3rem, 10vw, 7rem) clamp(1rem, 5vw, 4rem) clamp(2.5rem, 8vw, 5rem);
 }
@@ -264,7 +283,7 @@
 }
 .megatype__row--ghost {
   font-size: clamp(3.2rem, 14vw, 9rem);
-  color: rgba(242, 240, 235, 0.06);
+  color: var(--text-host);
   translate: -4vw 0;
 }
 .megatype__row--solid {
@@ -296,14 +315,14 @@
   background: var(--void-panel);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  box-shadow: 0 28px 80px rgba(0, 0, 0, 0.45);
+  box-shadow: var(--shadow-strong);
   clip-path: polygon(0 0, 100% 0, 100% calc(100% - 18px), calc(100% - 18px) 100%, 0 100%);
 }
 
 .lede {
   margin: 0 0 1.25rem;
   font-size: clamp(1rem, 2.2vw, 1.15rem);
-  color: #d4d1cd;
+  color: var(--muted);
 }
 .lede em {
   font-style: normal;
@@ -315,6 +334,12 @@
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
+}
+
+button.chip {
+  border: none;
+  cursor: pointer;
+  font: inherit;
 }
 
 .chip {
@@ -380,7 +405,7 @@
 }
 
 .panel--ink {
-  background: rgba(5, 5, 6, 0.88);
+  background: var(--color-linear-bg);
   border: 1px solid var(--stroke);
 }
 
@@ -423,14 +448,12 @@
 
 .stat-block {
   padding: clamp(1.25rem, 3vw, 2rem);
-  background: rgba(10, 10, 12, 0.88);
+  background: var(--color-linear-bg);
   backdrop-filter: blur(12px);
 }
 
 .stat-block--xl {
-  background:
-    linear-gradient(145deg, rgba(255, 78, 51, 0.12), transparent 45%),
-    rgba(10, 10, 12, 0.92);
+  background: var(--color-linear-bg);
 }
 
 .stat-block--warm {
@@ -558,7 +581,7 @@
   padding: 1.25rem 1.35rem;
   border: 1px solid var(--stroke);
   border-radius: 2px;
-  background: rgba(12, 12, 14, 0.75);
+  background: var(--color-linear-bg);
 }
 .snap-card h3 {
   margin: 0 0 0.35rem;
@@ -601,7 +624,7 @@
 
 .meter {
   padding: 1rem 1.15rem;
-  background: rgba(10, 10, 11, 0.9);
+  background: var(--color-linear-bg);
 }
 .meter__k {
   display: block;
@@ -624,7 +647,7 @@
   margin: 2rem clamp(1rem, 5vw, 4rem) 0;
   border: 1px solid var(--stroke);
   border-radius: 2px;
-  background: rgba(9, 9, 10, 0.75);
+  background: var(--color-linear-bg);
 }
 
 .matrix {
@@ -649,7 +672,7 @@
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--dim);
-  background: rgba(255, 255, 255, 0.02);
+  background: var(--color-linear-bg);
 }
 
 .matrix td {
@@ -657,7 +680,7 @@
 }
 
 .matrix tbody tr:hover td {
-  background: rgba(94, 255, 210, 0.04);
+  background: rgba(94, 255, 209, 0.342);
 }
 
 .matrix tbody tr:last-child td {
@@ -709,18 +732,84 @@
   }
 }
 
-.foot {
-  padding: clamp(2.5rem, 8vw, 5rem) clamp(1rem, 5vw, 4rem) clamp(3rem, 10vw, 6rem);
-  border-top: 1px solid var(--stroke);
-  font-size: 0.92rem;
-  color: var(--muted);
+/* CTA + quotes (home) */
+.fold--cta .fold__title,
+.fold--quotes-home .fold__title {
+  margin-left: clamp(1rem, 5vw, 4rem);
 }
-.foot p {
+
+.fold--quotes-home .fold__label {
+  margin-left: clamp(1rem, 5vw, 4rem);
+}
+
+.cta-grid {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1.25rem;
+  margin-left: clamp(1rem, 5vw, 4rem);
+  max-width: min(920px, 96vw);
+}
+@media (min-width: 720px) {
+  .cta-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.cta-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.85rem;
+}
+
+.cta-card__lead {
   margin: 0;
-  max-width: 52ch;
+  font-family: var(--font-d);
+  font-weight: 800;
+  font-size: 0.95rem;
+  letter-spacing: -0.02em;
 }
-.foot__slash {
-  margin: 0 0.5rem;
-  color: var(--signal);
-  font-weight: 900;
+
+.cta-card__dek {
+  margin: 0;
+  font-size: 0.88rem;
+  color: var(--muted);
+  line-height: 1.45;
+}
+
+.cta-card--co {
+  border-color: rgba(255, 78, 51, 0.35);
+  background: linear-gradient(165deg, rgba(255, 78, 51, 0.08), rgba(8, 8, 10, 0.72));
+}
+
+.quotes-row {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1.25rem;
+  margin-left: clamp(1rem, 5vw, 4rem);
+  max-width: min(980px, 96vw);
+}
+@media (min-width: 780px) {
+  .quotes-row {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.quote-tile {
+  margin: 0;
+  padding: 1.05rem 1.15rem;
+}
+
+.quote-tile blockquote {
+  margin: 0;
+  font-size: 0.86rem;
+  color: var(--muted);
+  line-height: 1.45;
+}
+
+.quotes-note {
+  margin: 1.25rem clamp(1rem, 5vw, 4rem) 0;
+  max-width: min(52ch, 94vw);
+  font-size: 0.82rem;
+  color: var(--dim);
 }

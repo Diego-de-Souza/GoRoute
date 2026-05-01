@@ -1,22 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { provideRouter } from '@angular/router';
 import {
   provideTranslateLoader,
   provideTranslateService,
   TranslateNoOpLoader,
 } from '@ngx-translate/core';
 
-import { Home } from './home';
+import { Footer } from './footer';
 
-describe('Home', () => {
-  let component: Home;
-  let fixture: ComponentFixture<Home>;
+describe('Footer', () => {
+  let component: Footer;
+  let fixture: ComponentFixture<Footer>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [Home],
+      imports: [Footer],
       providers: [
-        provideRouter([]),
         ...provideTranslateService({
           loader: provideTranslateLoader(TranslateNoOpLoader),
           lang: 'pt-BR',
@@ -25,7 +23,7 @@ describe('Home', () => {
       ],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(Home);
+    fixture = TestBed.createComponent(Footer);
     component = fixture.componentInstance;
     await fixture.whenStable();
   });

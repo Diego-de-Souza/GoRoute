@@ -1,24 +1,41 @@
 import { isPlatformBrowser } from '@angular/common';
 import { Component, OnDestroy, OnInit, PLATFORM_ID, inject } from '@angular/core';
+import { RouterLink } from '@angular/router';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { I18nService, LanguageId } from '../../core/services/i18n.service';
+import { ThemeService, ThemeId } from '../../core/services/theme.service';
 
 @Component({
   selector: 'app-side-menu',
   standalone: true,
+  imports: [TranslateModule, RouterLink],
   templateUrl: './side-menu.html',
   styleUrl: './side-menu.scss',
 })
 export class SideMenu implements OnInit, OnDestroy {
   private readonly platformId = inject(PLATFORM_ID);
+  private readonly theme = inject(ThemeService);
+  private readonly i18n = inject(I18nService);
+  private readonly translate = inject(TranslateService);
 
   private clockTimer?: number;
   private weatherTimer?: number;
+  private langSub?: { unsubscribe(): void };
 
   menuPinned = false;
   menuHover = false;
 
   clockTime = '';
   clockDate = '';
-  weatherLabel = 'Carregando clima…';
+  weatherLabel = '';
+
+  get themeId(): ThemeId {
+    return this.theme.theme();
+  }
+
+  get languageId(): LanguageId {
+    return this.i18n.language();
+  }
 
   get menuOpen(): boolean {
     return this.menuPinned || this.menuHover;
@@ -43,17 +60,19 @@ export class SideMenu implements OnInit, OnDestroy {
 
     const updateClock = (): void => {
       const now = new Date();
-      this.clockTime = new Intl.DateTimeFormat('pt-BR', {
+      const locale = this.i18n.language();
+      this.clockTime = new Intl.DateTimeFormat(locale, {
         hour: '2-digit',
         minute: '2-digit',
       }).format(now);
-      this.clockDate = new Intl.DateTimeFormat('pt-BR', {
+      this.clockDate = new Intl.DateTimeFormat(locale, {
         weekday: 'short',
         day: '2-digit',
         month: 'short',
       }).format(now);
     };
 
+    this.weatherLabel = this.translate.instant('WEATHER.LOADING');
     updateClock();
     this.clockTimer = window.setInterval(updateClock, 1000);
 
@@ -77,12 +96,14 @@ export class SideMenu implements OnInit, OnDestroy {
         const t = json.current?.temperature_2m;
         const w = json.current?.wind_speed_10m;
         const code = json.current?.weather_code;
-        const temp = typeof t === 'number' ? `${Math.round(t)}°C` : '—';
-        const wind = typeof w === 'number' ? `${Math.round(w)} km/h` : '—';
-        const badge = typeof code === 'number' ? `código ${code}` : 'código —';
-        this.weatherLabel = `${temp} · vento ${wind} · ${badge}`;
+        const tempUnit = this.translate.instant('WEATHER.TEMP_UNIT');
+        const windUnit = this.translate.instant('WEATHER.WIND_UNIT');
+        const temp = typeof t === 'number' ? `${Math.round(t)}${tempUnit}` : '—';
+        const wind = typeof w === 'number' ? `${Math.round(w)} ${windUnit}` : '—';
+        const c = typeof code === 'number' ? String(code) : '—';
+        this.weatherLabel = this.translate.instant('WEATHER.FORMAT', { temp, wind, code: c });
       } catch {
-        this.weatherLabel = 'Clima indisponível';
+        this.weatherLabel = this.translate.instant('WEATHER.UNAVAILABLE');
       }
     };
 
@@ -107,6 +128,12 @@ export class SideMenu implements OnInit, OnDestroy {
 
     resolveLocationAndFetch();
     this.weatherTimer = window.setInterval(resolveLocationAndFetch, 10 * 60 * 1000);
+
+    this.langSub = this.translate.onLangChange.subscribe(() => {
+      updateClock();
+      this.weatherLabel = this.translate.instant('WEATHER.LOADING');
+      resolveLocationAndFetch();
+    });
   }
 
   ngOnDestroy(): void {
@@ -118,6 +145,16 @@ export class SideMenu implements OnInit, OnDestroy {
       window.clearInterval(this.weatherTimer);
       this.weatherTimer = undefined;
     }
+    this.langSub?.unsubscribe();
+    this.langSub = undefined;
+  }
+
+  setTheme(theme: ThemeId): void {
+    this.theme.setTheme(theme);
+  }
+
+  setLanguage(lang: LanguageId): void {
+    this.i18n.setLanguage(lang);
   }
 }
 

@@ -3,7 +3,7 @@
   [class.side--open]="menuOpen"
   (mouseenter)="onMenuEnter()"
   (mouseleave)="onMenuLeave()"
-  aria-label="Menu lateral"
+  [attr.aria-label]="'MENU.ARIA' | translate"
 >
   <div class="side__inner">
     <button
@@ -11,21 +11,21 @@
       class="side__pin"
       (click)="togglePin()"
       [attr.aria-pressed]="menuPinned"
-      [attr.aria-label]="menuPinned ? 'Desafixar menu' : 'Fixar menu'"
+      [attr.aria-label]="(menuPinned ? 'MENU.UNPIN' : 'MENU.PIN') | translate"
     >
       <span class="side__pin-ic" aria-hidden="true"></span>
     </button>
 
     <div class="side__brand" aria-hidden="true">GR</div>
 
-    <nav class="side__nav" aria-label="Páginas">
-      <a href="#conteudo">Início</a>
-      <a href="#numeros">Dor</a>
-      <a href="#contexto">Mapa</a>
-      <a href="#publico">Público</a>
+    <nav class="side__nav" [attr.aria-label]="'MENU.PAGES_ARIA' | translate">
+      <a routerLink="/" fragment="conteudo">{{ 'MENU.NAV.HOME' | translate }}</a>
+      <a routerLink="/about">{{ 'MENU.NAV.ABOUT' | translate }}</a>
+      <a routerLink="/" fragment="contexto">{{ 'MENU.NAV.MAP' | translate }}</a>
+      <a routerLink="/" fragment="publico">{{ 'MENU.NAV.AUDIENCE' | translate }}</a>
     </nav>
 
-    <section class="side__widget" aria-label="Weather & Clock">
+    <section class="side__widget" [attr.aria-label]="'MENU.WIDGET_ARIA' | translate">
       <div class="wc">
         <div class="wc__time">{{ clockTime }}</div>
         <div class="wc__date">{{ clockDate }}</div>
@@ -33,7 +33,29 @@
       </div>
     </section>
 
-    <section class="side__social" aria-label="Redes sociais">
+    <section class="side__widget" [attr.aria-label]="'MENU.SETTINGS.TITLE' | translate">
+      <div class="wc">
+        <div class="wc__date">{{ 'MENU.SETTINGS.THEME' | translate }}</div>
+        <div class="wc__weather">
+          <select [value]="themeId" (change)="setTheme(($any($event.target).value))">
+            <option value="light">{{ 'MENU.SETTINGS.THEME_LIGHT' | translate }}</option>
+            <option value="dark">{{ 'MENU.SETTINGS.THEME_DARK' | translate }}</option>
+          </select>
+        </div>
+
+        <div class="wc__date wc__date--spaced">{{ 'MENU.SETTINGS.LANG' | translate }}</div>
+        <div class="wc__weather">
+          <select [value]="languageId" (change)="setLanguage(($any($event.target).value))">
+            <option value="pt-BR">{{ 'MENU.SETTINGS.LANG_PT' | translate }}</option>
+            <option value="en">{{ 'MENU.SETTINGS.LANG_EN' | translate }}</option>
+            <option value="es">{{ 'MENU.SETTINGS.LANG_ES' | translate }}</option>
+            <option value="de">{{ 'MENU.SETTINGS.LANG_DE' | translate }}</option>
+          </select>
+        </div>
+      </div>
+    </section>
+
+    <section class="side__social" [attr.aria-label]="'MENU.SOCIAL_ARIA' | translate">
       <a class="soc" href="https://github.com/" target="_blank" rel="noopener">GitHub</a>
       <a class="soc" href="https://www.linkedin.com/" target="_blank" rel="noopener">LinkedIn</a>
       <a class="soc" href="https://www.instagram.com/" target="_blank" rel="noopener">Instagram</a>

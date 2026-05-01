@@ -1,0 +1,267 @@
+{
+  "APP": {
+    "TITLE": "GoRoute — roadmap de carreira orientado a dados"
+  },
+  "HOME": {
+    "SKIP": "Pular para o conteúdo",
+    "GRAPH_ARIA": "Mapa interativo de carreiras — arraste os nós e use o scroll para zoom.",
+    "WORDMARK_ARIA": "GoRoute — início",
+    "SECTIONS_ARIA": "Seções",
+    "NAV": {
+      "PAIN": "Dor",
+      "CONTEXT": "Contexto",
+      "AUDIENCE": "Quem",
+      "CTA": "Convite",
+      "QUOTES": "Vozes"
+    },
+    "GRAPH_LIVE": "grafo ativo",
+    "RAIL_HINT": "arraste · zoom · explore",
+    "HERO": {
+      "GHOST": "trajetória",
+      "SOLID": "Sua próxima",
+      "ACCENT": "decisão",
+      "LEDE": "Motor de recomendação que cruza <em>vagas abertas agora</em> com <em>trajetórias reais</em> de promoção — não mais lista genérica de cursos.",
+      "CTA_LEGEND": "Legenda do mapa",
+      "CTA_AUDIENCE": "Público-alvo",
+      "MICRO": "O grafo cobre a tela inteira — use os espaços vazios ou esta área para interagir."
+    },
+    "TICKER": {
+      "N": "48M",
+      "T": "profissionais no TAM Brasil · roadmap orientado a dados"
+    },
+    "PAIN": {
+      "LABEL": "01 · atrito",
+      "TITLE": "A dor em números",
+      "S1": "sem clareza nos <strong>3 próximos passos</strong> (Gartner, 2023).",
+      "S2": "millennials e Gen Z com ansiedade por falta de direção.",
+      "S3": "média para mudar de área · estimativa <strong>R$ 40k+</strong> perdidos na indecisão."
+    },
+    "CONTEXT": {
+      "LABEL": "02 · mapa",
+      "TITLE": "O fundo é o produto",
+      "P": "Cada cor é um ramo. Do centro saem áreas e especializações — puxe um nó e veja a ramificação inteira se reorganizar.",
+      "LEGEND_ARIA": "Legenda das cores do grafo",
+      "LEGEND": {
+        "START": "Partida",
+        "TECH": "Tech",
+        "DATA": "Dados",
+        "PRODUCT": "Produto",
+        "BUSINESS": "Negócios",
+        "HEALTH": "Saúde",
+        "CREATIVE": "Criativo"
+      }
+    },
+    "AUDIENCE": {
+      "LABEL": "03 · alcance",
+      "TITLE": "Público-alvo",
+      "DEK": "TAM · SAM · SOM — narrativa em dados, não em autopropaganda.",
+      "CARDS": {
+        "YOUNG_T": "Jovens 18–25",
+        "YOUNG_P": "Primeiro emprego, estágio ou troca de curso.",
+        "EARLY_T": "Início 25–35",
+        "EARLY_P": "Estagnação, promoção ou mudança de stack.",
+        "LEAD_T": "Liderança 35–50",
+        "LEAD_P": "Diretoria, política organizacional e técnica.",
+        "RELOC_T": "Recolocação",
+        "RELOC_P": "Transição de área — ex. adm → dados."
+      },
+      "METERS": {
+        "TAM": "TAM total",
+        "SAM": "SAM digital",
+        "SOM": "SOM ano 1"
+      },
+      "TABLE": {
+        "SEGMENT": "Segmento",
+        "TAM": "TAM",
+        "BEHAVIOR": "Comportamento",
+        "R1S": "Jovens (18–25)",
+        "R1B": "Primeiro emprego, estágio ou transição de curso.",
+        "R2S": "Início de carreira (25–35)",
+        "R2B": "Estagnação, promoção ou mudança de stack.",
+        "R3S": "Gestores e líderes (35–50)",
+        "R3B": "Evoluir para diretorias; gaps de política e técnica.",
+        "R4S": "Recolocação / transição",
+        "R4B": "Demitidos ou migrando de área (ex.: adm → dados).",
+        "PILL_YEAR": "4M / ano"
+      }
+    },
+    "CTA_SECTION": {
+      "LABEL": "04 · convite",
+      "TITLE": "Convite à ação — faça parte agora",
+      "PRO_TITLE": "Se você é profissional:",
+      "PRO_CTA": "Crie seu roadmap gratuitamente",
+      "PRO_DEK": "Mostre suas skills, acompanhe seu crescimento e deixe as oportunidades certas te encontrarem.",
+      "CO_TITLE": "Se você é empresa:",
+      "CO_CTA": "Cadastre sua primeira vaga",
+      "CO_DEK": "Teste a qualidade dos matches. Quando quiser automatizar, fale conosco sobre integração via API."
+    },
+    "QUOTES_SECTION": {
+      "LABEL": "05 · motivação",
+      "TITLE": "Frases que contam nossa história",
+      "Q1": "Pare de enviar currículo no escuro. Construa seu roadmap profissional e deixe as empresas certas te acharem. GoRoute — seu mapa, suas oportunidades.",
+      "Q2": "Empresa cansada de currículos que não condizem com a realidade? Cadastre vagas manualmente ou integre via API. Conheça a GoRoute.",
+      "Q3": "A GoRoute nasceu de uma dor real: profissionais sem direção e empresas sem visibilidade real das habilidades. Nós criamos a ponte."
+    },
+    "FOOTER": "GoRoute — trajetórias com evidência de mercado.<span class=\"site-footer__slash\" aria-hidden=\"true\">/</span>Sem achismo."
+  },
+  "ABOUT": {
+    "SKIP": "Pular para o conteúdo da página Sobre",
+    "WORDMARK_ARIA": "GoRoute — topo do conteúdo nesta página",
+    "DOCK_ARIA": "Seções da página Sobre",
+    "DOCK": {
+      "ORIGIN": "Origem",
+      "WHAT": "Plataforma",
+      "AUDIENCE": "Público",
+      "FEATURES": "Funcionalidades",
+      "VISION": "Visão"
+    },
+    "HERO": {
+      "LABEL": "Institucional",
+      "TITLE": "Sobre a GoRoute",
+      "SUBTITLE": "Onde seu roadmap profissional encontra oportunidades reais",
+      "LEDE": "A GoRoute <em>une planejamento de trajetória profissional</em> com <em>conexão direta ao mercado</em> — emprego fixo ou freela — com match transparente por competências.",
+      "CTA_HOME": "Ver convite na página inicial"
+    },
+    "ORIGIN": {
+      "LABEL": "01 · origem",
+      "TITLE": "Nossa origem: nascemos de uma dor real do mercado",
+      "Q": "Você já sentiu que sua carreira está espalhada em vários lugares?",
+      "P1": "O currículo no LinkedIn, as habilidades no portfólio, os contatos no WhatsApp, as vagas em 20 sites diferentes… e nenhum lugar que una planejamento de trajetória profissional com conexão direta com o mercado — seja para um emprego fixo ou um freela.",
+      "P2": "Empresas também sofrem: gastam horas filtrando currículos que não refletem o que o profissional realmente sabe fazer. Perdem talentos porque não conseguem enxergar suas skills reais, apenas títulos bonitos.",
+      "P3": "Foi assim que a GoRoute nasceu.",
+      "P4": "Não mais um simples portal de empregos. Não mais um organizador de metas solitário. A GoRoute é a plataforma que conecta seu mapa de evolução profissional às empresas certas — de forma inteligente, transparente e escalável."
+    },
+    "WHAT": {
+      "LABEL": "02 · produto",
+      "TITLE": "O que é a GoRoute?",
+      "P1": "A GoRoute é um ecossistema onde profissionais constroem seu roadmap de carreira (com marcos, habilidades e objetivos) e empresas encontram esses talentos por meio de match baseado em competências reais.",
+      "Q_INTRO": "Você pode pensar assim:",
+      "QUOTE": "Um Waze para sua vida profissional, mas com oportunidades reais surgindo ao longo do caminho.",
+      "P_PRO_INTRO": "Se você é um profissional, a GoRoute te ajuda a:",
+      "PRO_1": "Mapear sua evolução técnica e comportamental.",
+      "PRO_2": "Visualizar seu progresso em uma linha do tempo clara.",
+      "PRO_3": "Ser encontrado por empresas que buscam exatamente o que você sabe fazer (e não apenas o que está no seu título).",
+      "P_CO_INTRO": "Se você é uma empresa, a GoRoute te permite:",
+      "CO_1": "Cadastrar vagas fixas ou freelancers de forma manual (via formulário simples).",
+      "CO_2": "Integrar seu sistema de RH através de endpoints dedicados para criação automática de vagas.",
+      "CO_3": "Acessar uma base de profissionais organizados por habilidades reais, não apenas por palavras-chave."
+    },
+    "AUDIENCE": {
+      "LABEL": "03 · para quem",
+      "TITLE": "Para quem a GoRoute foi criada?",
+      "PRO_TITLE": "Para profissionais",
+      "CO_TITLE": "Para empresas",
+      "PRO_1": "Quem está começando e quer construir um roadmap claro.",
+      "PRO_2": "Quem quer migrar de área e precisa mostrar evolução.",
+      "PRO_3": "Quem é freelancer e deseja ser encontrado por projetos pontuais.",
+      "PRO_4": "Quem já tem experiência mas está cansado de enviar currículos cegos.",
+      "CO_1": "Startups que precisam contratar rápido.",
+      "CO_2": "Grandes empresas que querem diversificar fontes de talento.",
+      "CO_3": "RHs que buscam redução de ruído na triagem de candidatos.",
+      "CO_4": "Negócios que precisam de uma API para integrar vagas automaticamente."
+    },
+    "FEATURES": {
+      "LABEL": "04 · valor",
+      "TITLE": "Funcionalidades que fazem a diferença",
+      "COL_PRO": "Para profissionais",
+      "COL_CO": "Para empresas",
+      "R1_PRO": "Criação de roadmap com marcos temporais",
+      "R1_CO": "Cadastro manual de vagas (CLT, PJ, Freela)",
+      "R2_PRO": "Portfólio de skills com nível de proficiência",
+      "R2_CO": "Busca de profissionais por habilidades específicas",
+      "R3_PRO": "Perfil público com linha do tempo de evolução",
+      "R3_CO": "Endpoints API REST para cadastro em lote de vagas",
+      "R4_PRO": "Notificações de matches com vagas compatíveis",
+      "R4_CO": "Painel de controle com métricas de match",
+      "R5_PRO": "Histórico de projetos e certificações",
+      "R5_CO": "Integração com sistemas de RH existentes"
+    },
+    "CONNECTION": {
+      "LABEL": "05 · fluxo",
+      "TITLE": "Como funciona a conexão entre profissional e empresa?",
+      "S1": "O profissional constrói seu roadmap — define áreas de interesse, skills e metas de curto/médio prazo.",
+      "S2": "A empresa cadastra uma vaga — informa habilidades necessárias, tipo de contrato e localidade (ou remoto).",
+      "S3": "O algoritmo da GoRoute cruza os dados — sugerindo profissionais que têm ou estão desenvolvendo exatamente as skills pedidas.",
+      "S4": "O match acontece de forma orgânica — ambas as partes recebem uma notificação e podem iniciar contato direto pela plataforma.",
+      "NOTE": "Diferencial: mesmo que o profissional ainda não tenha 100% das skills de uma vaga, o roadmap mostra que ele está em evolução — e a empresa pode decidir apostar no potencial."
+    },
+    "DUAL": {
+      "LABEL": "06 · escalabilidade",
+      "TITLE": "Nosso diferencial: rota dupla (manual + API)",
+      "P1": "A GoRoute entende que cada empresa tem um momento e uma estrutura. Por isso, oferecemos duas formas de cadastrar vagas:",
+      "MANUAL_TITLE": "Manual —",
+      "MANUAL": "para negócios menores, contratações pontuais ou testes iniciais.",
+      "API_TITLE": "Via endpoint —",
+      "API": "para empresas que já possuem sistema de RH e querem automatizar o envio de vagas diretamente para nossa base, usando rotas específicas e seguras.",
+      "P2": "Isso significa que você pode começar de forma simples e, quando quiser escalar, integrar a GoRoute ao seu fluxo já existente sem dores de cabeça."
+    },
+    "VISION": {
+      "LABEL": "07 · visão",
+      "TITLE": "O que estamos construindo (nossa visão)",
+      "DECLARATION": "Queremos ser o principal ponto de referência para quem leva a sério o desenvolvimento profissional no Brasil e na América Latina.",
+      "IMAGINA": "Imagina um lugar onde:",
+      "V1": "O jovem que está aprendendo programação pode mostrar sua evolução semana a semana.",
+      "V2": "A profissional experiente pode encontrar freelas internacionais sem sair do seu roadmap.",
+      "V3": "A empresa de tecnologia consegue preencher vagas em 48h com pessoas que já dominam as ferramentas que ela usa.",
+      "TAG": "Isso é GoRoute."
+    },
+    "CLOSING": {
+      "TITLE": "GoRoute — Onde cada skill tem seu caminho, e cada caminho leva a uma oportunidade.",
+      "P1": "Junte-se a nós nessa jornada.",
+      "P2": "Vamos construir o futuro do trabalho, juntos."
+    }
+  },
+  "FOOTER": {
+    "SITE_ARIA": "Rodapé do site",
+    "NAV_ARIA": "Atalhos nesta página",
+    "EXPLORE": "Explorar",
+    "TABS_LABEL": "Abas do menu",
+    "TABS_ARIA": "Seções como no menu lateral",
+    "SOCIAL_TITLE": "Redes sociais",
+    "SOCIAL": {
+      "GITHUB": "GitHub",
+      "LINKEDIN": "LinkedIn",
+      "INSTAGRAM": "Instagram",
+      "X": "X"
+    },
+    "BADGE": "Mapa interativo",
+    "HINT": "Arraste nós · zoom · revelar ramificações",
+    "COPYRIGHT": "© {{year}} GoRoute — trajetórias orientadas a dados",
+    "BACK_TOP": "Voltar ao topo"
+  },
+  "MENU": {
+    "ARIA": "Menu lateral",
+    "PIN": "Fixar menu",
+    "UNPIN": "Desafixar menu",
+    "PAGES_ARIA": "Páginas",
+    "NAV": {
+      "HOME": "Início",
+      "ABOUT": "Sobre",
+      "MAP": "Mapa",
+      "AUDIENCE": "Público"
+    },
+    "WIDGET_ARIA": "Clima e relógio",
+    "SOCIAL_ARIA": "Redes sociais",
+    "SETTINGS": {
+      "TITLE": "Preferências",
+      "THEME": "Tema",
+      "THEME_LIGHT": "Claro",
+      "THEME_DARK": "Escuro",
+      "LANG": "Idioma",
+      "LANG_PT": "Português",
+      "LANG_EN": "Inglês",
+      "LANG_ES": "Espanhol",
+      "LANG_DE": "Alemão"
+    }
+  },
+  "WEATHER": {
+    "LOADING": "Carregando clima…",
+    "UNAVAILABLE": "Clima indisponível",
+    "WIND": "vento",
+    "CODE": "código",
+    "FORMAT": "{{temp}} · vento {{wind}} · código {{code}}",
+    "TEMP_UNIT": "°C",
+    "WIND_UNIT": "km/h"
+  }
+}
+

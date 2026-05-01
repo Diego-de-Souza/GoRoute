@@ -1,5 +1,11 @@
 import { TestBed } from '@angular/core/testing';
 import { provideRouter, Router } from '@angular/router';
+import {
+  provideTranslateLoader,
+  provideTranslateService,
+  TranslateNoOpLoader,
+} from '@ngx-translate/core';
+
 import { App } from './app';
 import { routes } from './app.routes';
 
@@ -7,7 +13,14 @@ describe('App', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [App],
-      providers: [provideRouter(routes)],
+      providers: [
+        provideRouter(routes),
+        ...provideTranslateService({
+          loader: provideTranslateLoader(TranslateNoOpLoader),
+          lang: 'pt-BR',
+          fallbackLang: 'pt-BR',
+        }),
+      ],
     }).compileComponents();
   });
 

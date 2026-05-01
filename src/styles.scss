@@ -1,5 +1,59 @@
 @import 'vis-network/styles/vis-network.css';
 
+/* Global theme tokens (extendable for future themes) */
+:root {
+  --color-bg: #f7f8fc;
+  --color-fg: #0f1115;
+  --color-linear-bg: linear-gradient(145deg, rgba(255, 78, 51, 0.12), transparent 45%), rgba(163, 163, 163, 0.92);
+  --color-muted: rgba(15, 17, 21, 0.66);
+  --color-dim: rgba(15, 17, 21, 0.48);
+  --bg-rgb: 247 248 252;
+  --fg-rgb: 15 17 21;
+
+  --color-signal: #ff4e33;
+  --color-mint: #00bfa5;
+
+  --color-stroke: rgba(101, 114, 139, 0.12);
+  --hover-1: rgba(15, 17, 21, 0.04);
+  --hover-2: rgba(15, 17, 21, 0.08);
+
+  --surface-1: rgba(255, 255, 255, 0.72);
+  --surface-2: rgba(255, 255, 255, 0.84);
+  --glass: rgba(255, 255, 255, 0.58);
+  --mint-shadow: rgba(0, 191, 165, 0.18);
+  --shadow-strong: 0 28px 80px rgba(15, 17, 21, 0.18);
+
+  --font-d: 'Outfit', system-ui, sans-serif;
+  --font-b: 'Instrument Sans', system-ui, sans-serif;
+
+  --text-host: rgba(68, 68, 68, 0.144);
+}
+
+:root[data-theme='dark'] {
+  --color-bg: #060607;
+  --color-fg: #f2f0eb;
+  --color-linear-bg: linear-gradient(145deg, rgba(255, 78, 51, 0.12), transparent 45%), rgba(10, 10, 12, 0.92);
+  --color-muted: #98949a;
+  --color-dim: #5c595e;
+  --bg-rgb: 6 6 7;
+  --fg-rgb: 242 240 235;
+
+  --color-signal: #ff4e33;
+  --color-mint: #5effd2;
+
+  --color-stroke: rgba(255, 255, 255, 0.07);
+  --hover-1: rgba(255, 255, 255, 0.03);
+  --hover-2: rgba(255, 255, 255, 0.08);
+
+  --surface-1: rgba(6, 6, 7, 0.78);
+  --surface-2: rgba(9, 9, 10, 0.72);
+  --glass: rgba(8, 8, 10, 0.62);
+  --mint-shadow: rgba(94, 255, 210, 0.18);
+  --shadow-strong: 0 28px 80px rgba(0, 0, 0, 0.45);
+
+  --text-host: rgba(242, 240, 235, 0.06);
+}
+
 html {
   scroll-behavior: smooth;
   overflow-x: hidden;
@@ -14,7 +68,9 @@ html {
 body {
   margin: 0;
   min-height: 100%;
-  background: #060607;
-  color: #f2f0eb;
+  background: var(--color-bg);
+  color: var(--color-fg);
   overflow-x: hidden;
+  font-family: var(--font-b);
+  transition: background-color 160ms ease, color 160ms ease;
 }
