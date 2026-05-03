@@ -1,0 +1,15 @@
+{
+  "/goroute-auth": {
+    "target": "http://localhost:3010",
+    "secure": false,
+    "changeOrigin": true,
+    "pathRewrite": {
+      "^/goroute-auth": ""
+    }
+  },
+  "/api": {
+    "target": "http://localhost:3000",
+    "secure": false,
+    "changeOrigin": true
+  }
+}

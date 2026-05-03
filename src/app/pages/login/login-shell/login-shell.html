@@ -1,0 +1,70 @@
+<a class="auth-skip" href="#auth-main">{{ 'LOGIN.SKIP' | translate }}</a>
+
+<app-side-menu class="auth-hit"></app-side-menu>
+
+<div class="auth-stage">
+  <div class="auth-stage__mesh" aria-hidden="true"></div>
+  <div class="auth-stage__orb" aria-hidden="true"></div>
+  <div class="auth-stage__grid">
+    <aside class="auth-aside" aria-labelledby="auth-aside-title">
+      <div class="auth-aside__badge">
+        <span class="auth-aside__pulse" aria-hidden="true"></span>
+        {{ 'LOGIN.ASIDE_BADGE' | translate }}
+      </div>
+      <h1 id="auth-aside-title" class="auth-aside__title">{{ 'LOGIN.ASIDE_TITLE' | translate }}</h1>
+      <p class="auth-aside__dek">{{ 'LOGIN.ASIDE_DEK' | translate }}</p>
+
+      <ul class="auth-aside__pills">
+        <li class="auth-aside__pill">
+          <span class="auth-aside__pill-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 3l7 4v6c0 5-3.5 9-7 10-3.5-1-7-5-7-10V7l7-4z" stroke-linejoin="round" />
+              <path d="M9 12l2 2 4-5" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </span>
+          <div class="auth-aside__pill-body">
+            <span class="auth-aside__pill-title">{{ 'LOGIN.ASIDE_PILL1_T' | translate }}</span>
+            <span class="auth-aside__pill-text">{{ 'LOGIN.ASIDE_PILL1_D' | translate }}</span>
+          </div>
+        </li>
+        <li class="auth-aside__pill">
+          <span class="auth-aside__pill-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="9" />
+              <path d="M12 7v5l3 2" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </span>
+          <div class="auth-aside__pill-body">
+            <span class="auth-aside__pill-title">{{ 'LOGIN.ASIDE_PILL2_T' | translate }}</span>
+            <span class="auth-aside__pill-text">{{ 'LOGIN.ASIDE_PILL2_D' | translate }}</span>
+          </div>
+        </li>
+        <li class="auth-aside__pill">
+          <span class="auth-aside__pill-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke-linejoin="round" />
+              <path d="M9 12l2 2 4-4" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </span>
+          <div class="auth-aside__pill-body">
+            <span class="auth-aside__pill-title">{{ 'LOGIN.ASIDE_PILL3_T' | translate }}</span>
+            <span class="auth-aside__pill-text">{{ 'LOGIN.ASIDE_PILL3_D' | translate }}</span>
+          </div>
+        </li>
+      </ul>
+
+      <div class="auth-aside__callout">
+        <span class="auth-aside__callout-label">{{ 'LOGIN.MFA_CALLOUT_LABEL' | translate }}</span>
+        <p class="auth-aside__callout-text">{{ 'LOGIN.MFA_HINT' | translate }}</p>
+      </div>
+
+      <a class="auth-aside__back chip chip--ghost auth-hit" routerLink="/">{{ 'LOGIN.BACK_HOME' | translate }}</a>
+    </aside>
+
+    <main id="auth-main" class="auth-main auth-hit" tabindex="-1">
+      <div class="auth-main__frame">
+        <router-outlet />
+      </div>
+    </main>
+  </div>
+</div>

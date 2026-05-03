@@ -27,6 +27,18 @@
   --font-b: 'Instrument Sans', system-ui, sans-serif;
 
   --text-host: rgba(68, 68, 68, 0.144);
+
+  /*
+   * Short aliases used by shared components (e.g. side-menu).
+   * Home/About also map these on :host; routes without that mapping still need globals here.
+   */
+  --fg: var(--color-fg);
+  --bg: var(--color-bg);
+  --muted: var(--color-muted);
+  --dim: var(--color-dim);
+  --signal: var(--color-signal);
+  --mint: var(--color-mint);
+  --stroke: var(--color-stroke);
 }
 
 :root[data-theme='dark'] {

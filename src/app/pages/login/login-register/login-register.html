@@ -1,0 +1,154 @@
+<div class="auth-card">
+  <div class="auth-card__inner">
+    <header class="auth-card__head">
+      <span class="auth-card__label">{{ 'LOGIN.REGISTER_LABEL' | translate }}</span>
+      <h2 class="auth-card__title">{{ 'LOGIN.REGISTER_TITLE' | translate }}</h2>
+      <p class="auth-card__dek">{{ 'LOGIN.REGISTER_DEK' | translate }}</p>
+    </header>
+
+    @if (banner(); as b) {
+      <p class="auth-banner auth-banner--err" role="alert">{{ b.text | translate }}</p>
+    }
+
+    <form [formGroup]="form" (ngSubmit)="submit()" novalidate>
+      <section class="auth-panel" [attr.aria-labelledby]="'reg-account-h'">
+        <h3 id="reg-account-h" class="auth-panel__legend">{{ 'LOGIN.FORM_SECTION_ACCOUNT' | translate }}</h3>
+        <div class="auth-stack">
+          <fieldset class="auth-fieldset">
+            <legend class="auth-label">{{ 'LOGIN.ACCOUNT_TYPE' | translate }}</legend>
+            <label class="auth-check auth-check--block">
+              <input type="radio" formControlName="role" value="professional" />
+              <span>{{ 'LOGIN.ACCOUNT_PRO' | translate }}</span>
+            </label>
+            <label class="auth-check auth-check--block">
+              <input type="radio" formControlName="role" value="company" />
+              <span>{{ 'LOGIN.ACCOUNT_CO' | translate }}</span>
+            </label>
+          </fieldset>
+
+          @if (form.controls.role.value === 'company') {
+            <div class="auth-field">
+              <label class="auth-label" for="reg-company">{{ 'LOGIN.COMPANY_NAME' | translate }}</label>
+              <input
+                id="reg-company"
+                class="auth-input"
+                type="text"
+                autocomplete="organization"
+                formControlName="companyName"
+                [placeholder]="'LOGIN.COMPANY_NAME_PH' | translate"
+                [attr.aria-invalid]="
+                  form.controls.companyName.invalid && form.controls.companyName.touched
+                "
+              />
+              @if (form.controls.companyName.touched && form.controls.companyName.hasError('required')) {
+                <p class="auth-error">{{ 'LOGIN.ERR_REQUIRED' | translate }}</p>
+              }
+              @if (form.controls.companyName.touched && form.controls.companyName.hasError('minlength')) {
+                <p class="auth-error">{{ 'LOGIN.ERR_REGISTER_COMPANY' | translate }}</p>
+              }
+            </div>
+          }
+
+          <div class="auth-field">
+            <h3 class="auth-panel__legend auth-panel__legend--inline">{{ 'LOGIN.FORM_SECTION_CREDENTIALS' | translate }}</h3>
+          </div>
+
+          <div class="auth-field">
+            <label class="auth-label" for="reg-email">{{ 'LOGIN.EMAIL' | translate }}</label>
+            <input
+              id="reg-email"
+              class="auth-input"
+              type="email"
+              autocomplete="email"
+              formControlName="email"
+              [placeholder]="'LOGIN.EMAIL_PH' | translate"
+              [attr.aria-invalid]="form.controls.email.invalid && form.controls.email.touched"
+            />
+            @if (form.controls.email.touched && form.controls.email.hasError('required')) {
+              <p class="auth-error">{{ 'LOGIN.ERR_REQUIRED' | translate }}</p>
+            }
+            @if (form.controls.email.touched && form.controls.email.hasError('email')) {
+              <p class="auth-error">{{ 'LOGIN.ERR_EMAIL' | translate }}</p>
+            }
+          </div>
+
+          <div class="auth-field">
+            <div class="auth-field__label-row">
+              <label class="auth-label" for="reg-password">{{ 'LOGIN.PASSWORD' | translate }}</label>
+              <button
+                type="button"
+                class="auth-link-btn"
+                (click)="togglePassword()"
+                [attr.aria-pressed]="showPassword()"
+              >
+                {{ (showPassword() ? 'LOGIN.HIDE_PASSWORD' : 'LOGIN.SHOW_PASSWORD') | translate }}
+              </button>
+            </div>
+            <input
+              id="reg-password"
+              class="auth-input"
+              [type]="showPassword() ? 'text' : 'password'"
+              autocomplete="new-password"
+              formControlName="password"
+              [placeholder]="'LOGIN.PASSWORD_PH' | translate"
+              [attr.aria-invalid]="form.controls.password.invalid && form.controls.password.touched"
+            />
+            @if (form.controls.password.touched && form.controls.password.hasError('required')) {
+              <p class="auth-error">{{ 'LOGIN.ERR_REQUIRED' | translate }}</p>
+            }
+            @if (form.controls.password.touched && form.controls.password.hasError('minlength')) {
+              <p class="auth-error">{{ 'LOGIN.ERR_MIN_PASSWORD' | translate }}</p>
+            }
+          </div>
+
+          <div class="auth-field">
+            <label class="auth-label" for="reg-confirm">{{ 'LOGIN.PASSWORD_CONFIRM' | translate }}</label>
+            <input
+              id="reg-confirm"
+              class="auth-input"
+              [type]="showPassword() ? 'text' : 'password'"
+              autocomplete="new-password"
+              formControlName="confirm"
+              [placeholder]="'LOGIN.PASSWORD_CONFIRM_PH' | translate"
+              [attr.aria-invalid]="confirmTouchedMismatch() || (form.controls.confirm.invalid && form.controls.confirm.touched)"
+            />
+            @if (form.controls.confirm.touched && form.controls.confirm.hasError('required')) {
+              <p class="auth-error">{{ 'LOGIN.ERR_REQUIRED' | translate }}</p>
+            }
+            @if (confirmTouchedMismatch()) {
+              <p class="auth-error">{{ 'LOGIN.ERR_MISMATCH' | translate }}</p>
+            }
+          </div>
+
+          <label class="auth-check auth-check--block">
+            <input type="checkbox" formControlName="terms" />
+            <span>{{ 'LOGIN.TERMS' | translate }}</span>
+          </label>
+          @if (form.controls.terms.touched && form.controls.terms.invalid) {
+            <p class="auth-error">{{ 'LOGIN.ERR_TERMS' | translate }}</p>
+          }
+
+          <button class="auth-btn-primary" type="submit" [disabled]="submitting()">
+            <span>{{ submitting() ? ('LOGIN.SUBMITTING' | translate) : ('LOGIN.REGISTER_SUBMIT' | translate) }}</span>
+            @if (!submitting()) {
+              <svg class="auth-btn-primary__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path
+                  d="M5 12h14m0 0l-6-6m6 6l-6 6"
+                  stroke="currentColor"
+                  stroke-width="2.2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            }
+          </button>
+        </div>
+      </section>
+    </form>
+
+    <p class="auth-foot">
+      {{ 'LOGIN.HAVE_ACCOUNT' | translate }}
+      <a class="auth-link" routerLink="/login">{{ 'LOGIN.GO_SIGNIN' | translate }}</a>
+    </p>
+  </div>
+</div>

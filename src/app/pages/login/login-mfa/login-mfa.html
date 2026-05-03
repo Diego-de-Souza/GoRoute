@@ -1,0 +1,68 @@
+<div class="auth-card">
+  <div class="auth-card__inner">
+    <header class="auth-card__head">
+      <span class="auth-card__label">{{ 'LOGIN.MFA_LABEL' | translate }}</span>
+      <h2 class="auth-card__title">{{ 'LOGIN.MFA_TITLE' | translate }}</h2>
+      <p class="auth-card__dek">{{ 'LOGIN.MFA_DEK' | translate }}</p>
+      @if (maskedEmail()) {
+        <p class="auth-card__dek auth-card__dek--mono">{{ maskedEmail() }}</p>
+      }
+    </header>
+
+    @if (error()) {
+      <p class="auth-banner" role="alert" aria-live="assertive">{{ 'LOGIN.MFA_INVALID' | translate }}</p>
+    }
+
+    <form [formGroup]="form" (ngSubmit)="submit()" novalidate>
+      <section class="auth-panel">
+        <div class="auth-stack">
+          <div class="auth-field">
+            <label class="auth-label" for="mfa-code">{{ 'LOGIN.MFA_CODE_LABEL' | translate }}</label>
+            <input
+              id="mfa-code"
+              class="auth-input auth-code-input"
+              type="text"
+              inputmode="numeric"
+              maxlength="6"
+              autocomplete="one-time-code"
+              formControlName="code"
+              [placeholder]="'LOGIN.MFA_PH' | translate"
+              [attr.aria-invalid]="form.controls.code.invalid && form.controls.code.touched"
+            />
+            <span class="auth-hint">{{ 'LOGIN.MFA_HINT_INPUT' | translate }}</span>
+            @if (form.controls.code.touched && form.controls.code.hasError('required')) {
+              <p class="auth-error">{{ 'LOGIN.ERR_REQUIRED' | translate }}</p>
+            }
+            @if (form.controls.code.touched && form.controls.code.hasError('pattern')) {
+              <p class="auth-error">{{ 'LOGIN.MFA_PATTERN' | translate }}</p>
+            }
+          </div>
+
+          <button class="auth-btn-primary" type="submit" [disabled]="submitting()">
+            <span>{{ submitting() ? ('LOGIN.SUBMITTING' | translate) : ('LOGIN.MFA_SUBMIT' | translate) }}</span>
+            @if (!submitting()) {
+              <svg class="auth-btn-primary__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path
+                  d="M5 12h14m0 0l-6-6m6 6l-6 6"
+                  stroke="currentColor"
+                  stroke-width="2.2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            }
+          </button>
+
+          <button type="button" class="auth-btn-ghost" (click)="cancel()">
+            {{ 'LOGIN.MFA_BACK' | translate }}
+          </button>
+        </div>
+      </section>
+    </form>
+
+    <p class="auth-foot auth-foot--small">
+      {{ 'LOGIN.MFA_HELP' | translate }}
+      <a class="auth-link" [routerLink]="flow.afterMfaReturnPath()">{{ 'LOGIN.MFA_HELP_LINK' | translate }}</a>
+    </p>
+  </div>
+</div>
