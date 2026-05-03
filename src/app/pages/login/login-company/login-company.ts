@@ -6,7 +6,7 @@ import { TranslateModule } from '@ngx-translate/core';
 
 import { GorouteAuthApiService } from '../../../core/services/auth/goroute-auth-api.service';
 import { GorouteMapperApiContextService } from '../../../core/services/auth/goroute-mapper-api-context.service';
-import { LoginFlowService, type SocialProvider } from '../../../core/services/login/login-flow.service';
+import { LoginFlowService } from '../../../core/services/login/login-flow.service';
 import { PostAuthNavigationService } from '../../../core/services/login/post-auth-navigation.service';
 
 @Component({
@@ -26,7 +26,6 @@ export class LoginCompany implements OnDestroy {
 
   protected readonly showPassword = signal(false);
   protected readonly submitting = signal(false);
-  protected readonly socialBusy = signal<SocialProvider | null>(null);
   protected readonly banner = signal<{ kind: 'info' | 'err' | 'pending'; text: string } | null>(null);
 
   private bannerClear?: number;
@@ -34,6 +33,7 @@ export class LoginCompany implements OnDestroy {
   readonly form = this.fb.nonNullable.group({
     email: ['', [Validators.required, Validators.email]],
     password: ['', [Validators.required, Validators.minLength(8)]],
+    mobileAppKey: ['', [Validators.required, Validators.minLength(4)]],
     remember: [true],
   });
 
@@ -53,11 +53,11 @@ export class LoginCompany implements OnDestroy {
       return;
     }
 
-    const { email, password } = this.form.getRawValue();
+    const { email, password, mobileAppKey } = this.form.getRawValue();
     this.submitting.set(true);
     this.banner.set(null);
 
-    this.authApi.login(email, password).subscribe({
+    this.authApi.loginCompany(email, password, mobileAppKey).subscribe({
       next: (res) => {
         this.submitting.set(false);
         if (res.mfaRequired && res.tempToken) {
@@ -67,19 +67,19 @@ export class LoginCompany implements OnDestroy {
         }
         if (res.sessionIssued) {
           this.flow.clearMfa();
-          const role = res.role ?? 'company';
+          const role = res.role ?? 'professional';
           const onboardingDone =
             typeof res.onboardingCompleted === 'boolean' ? res.onboardingCompleted : true;
           this.postAuth.navigateAfterSession(role, onboardingDone);
           return;
         }
-        this.flashBanner('err', 'LOGIN.ERR_LOGIN');
+        this.flashBanner('err', 'LOGIN.ERR_LOGIN_COMPANY');
       },
       error: (err: unknown) => {
         this.submitting.set(false);
         if (err instanceof HttpErrorResponse && err.status === 401) {
           this.mapperContext.clear();
-          this.flashBanner('err', 'LOGIN.ERR_LOGIN');
+          this.flashBanner('err', 'LOGIN.ERR_LOGIN_COMPANY');
           return;
         }
         if (err instanceof HttpErrorResponse && err.status === 429) {
@@ -89,17 +89,6 @@ export class LoginCompany implements OnDestroy {
         this.flashBanner('err', 'LOGIN.ERR_NETWORK');
       },
     });
-  }
-
-  protected async social(provider: SocialProvider): Promise<void> {
-    this.socialBusy.set(provider);
-    this.banner.set(null);
-    try {
-      await this.flow.startSocialLogin(provider);
-      this.flashBanner('pending', 'LOGIN.SOCIAL_PENDING');
-    } finally {
-      this.socialBusy.set(null);
-    }
   }
 
   private flashBanner(kind: 'info' | 'err' | 'pending', translateKey: string): void {

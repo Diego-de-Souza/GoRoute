@@ -10,10 +10,13 @@ export type GorouteAuthLoginResponse = {
   sessionIssued: boolean;
   role?: 'professional' | 'company';
   onboardingCompleted?: boolean;
+  companyName?: string | null;
 };
 
+/** User register returns `userId`; company register returns `companyId`. */
 export type GorouteAuthRegisterResponse = {
-  userId: string;
+  userId?: string;
+  companyId?: string;
 };
 
 @Injectable({ providedIn: 'root' })
@@ -23,15 +26,27 @@ export class GorouteAuthApiService {
   private readonly mapperContext = inject(GorouteMapperApiContextService);
 
   login(email: string, password: string): Observable<GorouteAuthLoginResponse> {
+    return this.loginPost(`${this.env.authBaseUrl}/users/login`, { email, password });
+  }
+
+  /**
+   * Company web login: `/companies/login` with `mobileAppKey` from the GoRoute mobile app
+   * (backend validates the pairing key together with email and password).
+   */
+  loginCompany(email: string, password: string, mobileAppKey: string): Observable<GorouteAuthLoginResponse> {
+    return this.loginPost(`${this.env.authBaseUrl}/companies/login`, {
+      email,
+      password,
+      mobileAppKey: mobileAppKey.trim(),
+    });
+  }
+
+  private loginPost(url: string, body: Record<string, unknown>): Observable<GorouteAuthLoginResponse> {
     return this.http
-      .post<GorouteAuthLoginResponse>(
-        `${this.env.authBaseUrl}/login`,
-        { email, password },
-        {
-          observe: 'response',
-          headers: { 'X-Application-From': this.env.applicationFrom },
-        },
-      )
+      .post<GorouteAuthLoginResponse>(url, body, {
+        observe: 'response',
+        headers: { 'X-Application-From': this.env.applicationFrom },
+      })
       .pipe(
         tap((res) => {
           const h = res.headers.get('x-mapper-api');
@@ -42,11 +57,11 @@ export class GorouteAuthApiService {
           }
         }),
         map((res) => {
-          const body = res.body;
-          if (!body) {
+          const b = res.body;
+          if (!b) {
             throw new Error('Login response without body');
           }
-          return body;
+          return b;
         }),
       );
   }
@@ -54,14 +69,20 @@ export class GorouteAuthApiService {
   verifyMfa(
     tempToken: string,
     code: string,
-  ): Observable<{ ok: boolean; role?: 'professional' | 'company'; onboardingCompleted?: boolean }> {
+  ): Observable<{
+    ok: boolean;
+    role?: 'professional' | 'company';
+    onboardingCompleted?: boolean;
+    companyName?: string | null;
+  }> {
     return this.http
       .post<{
         ok: boolean;
         role?: 'professional' | 'company';
         onboardingCompleted?: boolean;
+        companyName?: string | null;
       }>(
-        `${this.env.authBaseUrl}/mfa/verify`,
+        `${this.env.authBaseUrl}/users/mfa/verify`,
         { tempToken, code },
         {
           observe: 'response',
@@ -87,18 +108,26 @@ export class GorouteAuthApiService {
       );
   }
 
-  register(
+  registerUser(email: string, password: string): Observable<GorouteAuthRegisterResponse> {
+    return this.http.post<GorouteAuthRegisterResponse>(
+      `${this.env.authBaseUrl}/users/register`,
+      { email, password },
+      { headers: { 'X-Application-From': this.env.applicationFrom } },
+    );
+  }
+
+  registerCompany(
     email: string,
     password: string,
-    role: 'professional' | 'company',
-    companyName?: string,
+    companyName: string,
+    cnpj?: string,
   ): Observable<GorouteAuthRegisterResponse> {
-    const body: Record<string, unknown> = { email, password, role };
-    if (role === 'company' && companyName) {
-      body['companyName'] = companyName;
+    const body: Record<string, unknown> = { email, password, companyName };
+    if (cnpj?.trim()) {
+      body['cnpj'] = cnpj.trim();
     }
     return this.http.post<GorouteAuthRegisterResponse>(
-      `${this.env.authBaseUrl}/register`,
+      `${this.env.authBaseUrl}/companies/register`,
       body,
       { headers: { 'X-Application-From': this.env.applicationFrom } },
     );

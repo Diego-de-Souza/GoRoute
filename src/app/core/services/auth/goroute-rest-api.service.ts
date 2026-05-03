@@ -7,6 +7,7 @@ export type GorouteMeUser = {
   id: string;
   email: string;
   role: 'professional' | 'company';
+  companyName?: string | null;
 };
 
 export type GorouteMeResponse = {

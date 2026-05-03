@@ -78,14 +78,12 @@ export class LoginRegister implements OnInit, OnDestroy {
     this.submitting.set(true);
     this.banner.set(null);
 
-    this.authApi
-      .register(
-        email,
-        password,
-        role,
-        role === 'company' ? companyName.trim() : undefined,
-      )
-      .subscribe({
+    const reg$ =
+      role === 'company'
+        ? this.authApi.registerCompany(email, password, companyName.trim())
+        : this.authApi.registerUser(email, password);
+
+    reg$.subscribe({
         next: () => {
           this.submitting.set(false);
           void this.router.navigate(['/login'], { queryParams: { welcome: '1' } });
