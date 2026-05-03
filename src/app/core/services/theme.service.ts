@@ -17,7 +17,6 @@ export class ThemeService {
     effect(() => {
       const t = this.theme();
       this.doc.documentElement.setAttribute('data-theme', t);
-      this.doc.documentElement.style.colorScheme = t;
       try {
         localStorage.setItem(STORAGE_KEY, t);
       } catch {
