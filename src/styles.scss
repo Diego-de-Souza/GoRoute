@@ -2,6 +2,8 @@
 
 /* Global theme tokens (extendable for future themes) */
 :root {
+  color-scheme: light dark;
+
   --color-bg: #f7f8fc;
   --color-fg: #0f1115;
   --color-linear-bg: linear-gradient(145deg, rgba(255, 78, 51, 0.12), transparent 45%), rgba(163, 163, 163, 0.92);
@@ -39,6 +41,16 @@
   --signal: var(--color-signal);
   --mint: var(--color-mint);
   --stroke: var(--color-stroke);
+}
+
+:root[data-theme='light'],
+html[data-theme='light'] {
+  color-scheme: light;
+}
+
+:root[data-theme='dark'],
+html[data-theme='dark'] {
+  color-scheme: dark;
 }
 
 :root[data-theme='dark'] {

@@ -2,6 +2,11 @@
 <html lang="pt-BR">
 <head>
   <meta charset="utf-8">
+  <!-- CSP dev: alinhar com GOROUTE_CSP_META_DEVELOPMENT em csp-policy.constants.ts; produção → scripts/harden-dist.mjs -->
+  <meta
+    http-equiv="Content-Security-Policy"
+    content="default-src 'self'; base-uri 'self'; object-src 'none'; img-src 'self' data: blob:; font-src 'self' https://fonts.gstatic.com data:; style-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com 'unsafe-inline' blob: data:; style-src-attr 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; connect-src 'self' https://api.open-meteo.com http: https: ws: wss: data: blob:; frame-src 'none'; worker-src 'self' blob:; manifest-src 'self'; upgrade-insecure-requests"
+  />
   <title>GoRoute — roadmap de carreira orientado a dados</title>
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">

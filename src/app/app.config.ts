@@ -4,7 +4,6 @@ import { provideRouter, withInMemoryScrolling } from '@angular/router';
 import { provideTranslateService, TranslateLoader } from '@ngx-translate/core';
 import { TRANSLATE_HTTP_LOADER_CONFIG, TranslateHttpLoader } from '@ngx-translate/http-loader';
 
-import { provideContentSecurityPolicy } from './core/security/content-security-policy';
 import { GOROUTE_ENV } from './core/config/app-environment';
 import { mapperApiHeaderInterceptor } from './core/http/mapper-api-header.interceptor';
 import { withCredentialsInterceptor } from './core/http/with-credentials.interceptor';
@@ -14,7 +13,6 @@ import { routes } from './app.routes';
 export const appConfig: ApplicationConfig = {
   providers: [
     { provide: GOROUTE_ENV, useValue: environment },
-    provideContentSecurityPolicy(),
     provideBrowserGlobalErrorListeners(),
     provideRouter(
       routes,
