@@ -1,38 +1,28 @@
 /**
- * Single source for CSP strings (runtime meta). Keep in sync with:
- * - `src/index.html` (first meta in `<head>` — parsed before any bundle runs)
- * - `vercel.json` → `headers` → `Content-Security-Policy` (HTTP header on Vercel)
+ * Document CSP for `index.html` and `vercel.json` only (no runtime meta mutation).
  *
- * If the browser reports a policy **without** `'unsafe-inline'` in `style-src`, a **stricter**
- * CSP is still coming from elsewhere (e.g. another meta tag or a platform header); remove it
- * so only this policy applies, or align that source with these values.
+ * - **style-src** + **style-src-elem** + **style-src-attr**: CSP Level 3 splits `<style>` / linked
+ *   CSS vs `style=""` updates; listing all three avoids engines that still enforce a stricter branch.
+ * - **blob:** on style sources: inlined critical CSS / tooling may reference blob URLs.
+ * - **script-src** includes `'unsafe-inline' 'unsafe-eval'` so `ng serve` (Vite) keeps working; the
+ *   production bundle is still same-origin. Tighten on your final host via HTTP header if needed.
+ *
+ * Keep this string in sync with `src/index.html` and `vercel.json`.
  */
-export const GOROUTE_CSP_PRODUCTION = [
+export const GOROUTE_CSP_DOCUMENT = [
   "default-src 'self'",
   "base-uri 'self'",
   "object-src 'none'",
   "img-src 'self' data: blob:",
   "font-src 'self' https://fonts.gstatic.com",
-  "style-src 'self' https://fonts.googleapis.com 'unsafe-inline'",
-  "script-src 'self'",
-  "script-src-attr 'unsafe-inline'",
-  "connect-src 'self' https://api.open-meteo.com",
-  "frame-src 'none'",
-  "worker-src 'self' blob:",
-  "manifest-src 'self'",
-  'upgrade-insecure-requests',
-].join('; ');
-
-export const GOROUTE_CSP_DEVELOPMENT = [
-  "default-src 'self'",
-  "base-uri 'self'",
-  "object-src 'none'",
-  "img-src 'self' data: blob:",
-  "font-src 'self' https://fonts.gstatic.com",
-  "style-src 'self' https://fonts.googleapis.com 'unsafe-inline'",
+  "style-src 'self' https://fonts.googleapis.com 'unsafe-inline' blob:",
+  "style-src-elem 'self' https://fonts.googleapis.com 'unsafe-inline' blob:",
+  "style-src-attr 'unsafe-inline'",
   "script-src 'self' 'unsafe-inline' 'unsafe-eval'",
+  "script-src-attr 'unsafe-inline'",
   "connect-src 'self' https://api.open-meteo.com http: https: ws: wss:",
   "frame-src 'none'",
   "worker-src 'self' blob:",
   "manifest-src 'self'",
+  'upgrade-insecure-requests',
 ].join('; ');
