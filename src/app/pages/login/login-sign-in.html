@@ -1,0 +1,176 @@
+<div class="auth-card">
+  <div class="auth-card__inner">
+    <header class="auth-card__head">
+      <span class="auth-card__label">{{ 'LOGIN.SIGNIN_LABEL' | translate }}</span>
+      <h2 class="auth-card__title">{{ 'LOGIN.SIGNIN_TITLE' | translate }}</h2>
+      <p class="auth-card__dek">{{ 'LOGIN.SIGNIN_DEK' | translate }}</p>
+    </header>
+
+    @if (banner(); as b) {
+      <p
+        class="auth-banner"
+        [class.auth-banner--info]="b.kind === 'info'"
+        [class.auth-banner--pending]="b.kind === 'pending'"
+        role="status"
+        aria-live="polite"
+      >
+        {{ b.text | translate }}
+      </p>
+    }
+
+    <form [formGroup]="form" (ngSubmit)="submit()" novalidate>
+      <section class="auth-panel" [attr.aria-labelledby]="'login-credentials-h'">
+        <h3 id="login-credentials-h" class="auth-panel__legend">{{ 'LOGIN.FORM_SECTION_CREDENTIALS' | translate }}</h3>
+        <div class="auth-stack">
+          <div class="auth-field">
+            <label class="auth-label" for="login-email">{{ 'LOGIN.EMAIL' | translate }}</label>
+            <input
+              id="login-email"
+              class="auth-input"
+              type="email"
+              autocomplete="email"
+              formControlName="email"
+              [placeholder]="'LOGIN.EMAIL_PH' | translate"
+              [attr.aria-invalid]="form.controls.email.invalid && form.controls.email.touched"
+              [attr.aria-describedby]="'login-email-hint'"
+            />
+            <span id="login-email-hint" class="auth-hint">{{ 'LOGIN.EMAIL_HINT' | translate }}</span>
+            @if (form.controls.email.touched && form.controls.email.hasError('required')) {
+              <p class="auth-error">{{ 'LOGIN.ERR_REQUIRED' | translate }}</p>
+            }
+            @if (form.controls.email.touched && form.controls.email.hasError('email')) {
+              <p class="auth-error">{{ 'LOGIN.ERR_EMAIL' | translate }}</p>
+            }
+          </div>
+
+          <div class="auth-field">
+            <div class="auth-field__label-row">
+              <label class="auth-label" for="login-password">{{ 'LOGIN.PASSWORD' | translate }}</label>
+              <button
+                type="button"
+                class="auth-link-btn"
+                (click)="togglePassword()"
+                [attr.aria-pressed]="showPassword()"
+              >
+                {{ (showPassword() ? 'LOGIN.HIDE_PASSWORD' : 'LOGIN.SHOW_PASSWORD') | translate }}
+              </button>
+            </div>
+            <input
+              id="login-password"
+              class="auth-input"
+              [type]="showPassword() ? 'text' : 'password'"
+              autocomplete="current-password"
+              formControlName="password"
+              [placeholder]="'LOGIN.PASSWORD_PH' | translate"
+              [attr.aria-invalid]="form.controls.password.invalid && form.controls.password.touched"
+            />
+            @if (form.controls.password.touched && form.controls.password.hasError('required')) {
+              <p class="auth-error">{{ 'LOGIN.ERR_REQUIRED' | translate }}</p>
+            }
+            @if (form.controls.password.touched && form.controls.password.hasError('minlength')) {
+              <p class="auth-error">{{ 'LOGIN.ERR_MIN_PASSWORD' | translate }}</p>
+            }
+          </div>
+
+          <div class="auth-actions">
+            <div class="auth-row">
+              <label class="auth-check">
+                <input type="checkbox" formControlName="remember" />
+                {{ 'LOGIN.REMEMBER' | translate }}
+              </label>
+              <a class="auth-link" routerLink="/login" fragment="auth-main">{{ 'LOGIN.FORGOT' | translate }}</a>
+            </div>
+
+            <button class="auth-btn-primary" type="submit" [disabled]="submitting()">
+              <span>{{ submitting() ? ('LOGIN.SUBMITTING' | translate) : ('LOGIN.SIGNIN_SUBMIT' | translate) }}</span>
+              @if (!submitting()) {
+                <svg class="auth-btn-primary__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path
+                    d="M5 12h14m0 0l-6-6m6 6l-6 6"
+                    stroke="currentColor"
+                    stroke-width="2.2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              }
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section class="auth-panel auth-panel--social" [attr.aria-labelledby]="'login-social-h'">
+        <div class="auth-divider" id="login-social-h">{{ 'LOGIN.SOCIAL_OR' | translate }}</div>
+        <div class="auth-social-row" role="group" [attr.aria-label]="'LOGIN.SOCIAL_ARIA' | translate">
+          <button
+            type="button"
+            class="auth-social"
+            [disabled]="socialBusy() !== null"
+            (click)="social('google')"
+            [attr.aria-busy]="socialBusy() === 'google'"
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                fill="currentColor"
+                d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
+              />
+              <path
+                fill="currentColor"
+                d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"
+              />
+              <path
+                fill="currentColor"
+                d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"
+              />
+              <path
+                fill="currentColor"
+                d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"
+              />
+            </svg>
+            {{ 'LOGIN.SOCIAL_GOOGLE' | translate }}
+          </button>
+          <button
+            type="button"
+            class="auth-social"
+            [disabled]="socialBusy() !== null"
+            (click)="social('github')"
+            [attr.aria-busy]="socialBusy() === 'github'"
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                fill="currentColor"
+                d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.009-.866-.013-1.7-2.782.603-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.464-1.11-1.464-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.089 2.91.833.092-.649.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0 1 12 6.836c.85.004 1.705.114 2.504.336 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"
+              />
+            </svg>
+            {{ 'LOGIN.SOCIAL_GITHUB' | translate }}
+          </button>
+          <button
+            type="button"
+            class="auth-social"
+            [disabled]="socialBusy() !== null"
+            (click)="social('apple')"
+            [attr.aria-busy]="socialBusy() === 'apple'"
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                fill="currentColor"
+                d="M16.365 1.43c0 1.14-.493 2.27-1.177 3.08-.744.9-1.99 1.57-2.987 1.57-.12 0-.23-.02-.3-.03-.01-.06-.04-.22-.04-.39 0-1.15.572-2.27 1.206-2.98.804-.94 2.142-1.64 3.248-1.68.03.13.05.28.05.43zm4.565 15.71c-.03.07-.463 1.58-1.518 3.12-.945 1.34-1.94 2.71-3.43 2.71-1.517 0-1.9-.88-3.63-.88-1.698 0-2.302.91-3.62.91-1.87 0-3.22-1.58-4.22-3.04-2.44-3.54-2.04-9.51 1.78-9.51 1.65 0 2.91 1.09 3.62 1.09.72 0 2.03-1.19 3.49-1.19 1.22 0 2.51.62 3.27 1.77-2.84 1.57-2.39 5.98.48 7.13-.57 1.54-1.31 3.09-2.27 4.59z"
+              />
+            </svg>
+            {{ 'LOGIN.SOCIAL_APPLE' | translate }}
+          </button>
+        </div>
+      </section>
+    </form>
+
+    <p class="auth-foot">
+      {{ 'LOGIN.NO_ACCOUNT' | translate }}
+      <a class="auth-link" routerLink="/login/register">{{ 'LOGIN.GO_REGISTER' | translate }}</a>
+    </p>
+
+    <p class="auth-foot auth-foot--switch">
+      {{ 'LOGIN.FOOTER_COMPANY_PROMPT' | translate }}
+      <a class="auth-link" routerLink="/login/empresa">{{ 'LOGIN.FOOTER_COMPANY_LINK' | translate }}</a>
+    </p>
+  </div>
+</div>

@@ -1,0 +1,149 @@
+.onb {
+  max-width: 42rem;
+  margin: 0 auto;
+  padding: 1.25rem 1rem 3rem;
+}
+
+.onb__loading {
+  text-align: center;
+  padding: 2rem;
+}
+
+.onb__head {
+  margin-bottom: 1.5rem;
+}
+
+.onb__title {
+  font-size: clamp(1.35rem, 4vw, 1.75rem);
+  margin: 0 0 0.35rem;
+}
+
+.onb__dek {
+  margin: 0 0 1rem;
+  opacity: 0.88;
+  line-height: 1.45;
+}
+
+.onb__steps {
+  margin: 0;
+  padding-left: 1.1rem;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+.onb__step-title {
+  font-weight: 600;
+}
+
+.onb__step-dek {
+  display: block;
+  opacity: 0.85;
+  font-weight: 400;
+}
+
+.onb__err {
+  color: var(--auth-err, #c62828);
+  margin: 0 0 1rem;
+}
+
+.onb__form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.onb__fieldset {
+  border: 1px solid color-mix(in srgb, currentColor 18%, transparent);
+  border-radius: 0.65rem;
+  padding: 1rem 0.9rem;
+  margin: 0;
+}
+
+.onb__fieldset legend {
+  padding: 0 0.35rem;
+  font-weight: 600;
+}
+
+.onb__label {
+  display: block;
+  font-size: 0.85rem;
+  margin: 0.5rem 0 0.2rem;
+}
+
+.onb__hint {
+  font-size: 0.8rem;
+  opacity: 0.85;
+  margin: 0 0 0.35rem;
+}
+
+.onb__input,
+.onb__textarea,
+.onb__select {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  padding: 0.55rem 0.65rem;
+  border-radius: 0.45rem;
+  border: 1px solid color-mix(in srgb, currentColor 22%, transparent);
+  font: inherit;
+}
+
+.onb__textarea {
+  resize: vertical;
+  min-height: 4rem;
+}
+
+.onb__row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.onb__input--slug {
+  flex: 1 1 8rem;
+}
+
+.onb__select {
+  flex: 0 0 9rem;
+}
+
+.onb__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  justify-content: flex-end;
+  margin-top: 0.5rem;
+}
+
+.onb__btn-primary,
+.onb__btn-secondary,
+.onb__btn-ghost {
+  font: inherit;
+  cursor: pointer;
+  border-radius: 0.45rem;
+  padding: 0.55rem 1rem;
+}
+
+.onb__btn-primary {
+  border: none;
+  font-weight: 600;
+}
+
+.onb__btn-secondary {
+  border: 1px solid color-mix(in srgb, currentColor 28%, transparent);
+  background: transparent;
+}
+
+.onb__btn-ghost {
+  border: none;
+  background: transparent;
+  text-decoration: underline;
+  padding: 0.35rem 0.5rem;
+}
+
+.onb__foot {
+  margin-top: 1.5rem;
+  font-size: 0.9rem;
+}

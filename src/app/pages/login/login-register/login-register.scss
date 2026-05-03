@@ -1,0 +1,22 @@
+@use '../login-auth.shared';
+
+.auth-fieldset {
+  border: none;
+  margin: 0 0 0.25rem;
+  padding: 0;
+}
+
+.auth-panel__legend--inline {
+  font-size: 0.95rem;
+  margin: 0.75rem 0 0.25rem;
+}
+
+.auth-check--block {
+  align-items: flex-start;
+
+  span {
+    line-height: 1.45;
+    font-size: 0.82rem;
+    color: var(--color-muted);
+  }
+}

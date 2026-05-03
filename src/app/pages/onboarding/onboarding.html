@@ -1,0 +1,146 @@
+<div class="onb">
+  @if (loading()) {
+    <p class="onb__loading">{{ 'ONBOARDING.LOADING' | translate }}</p>
+  } @else {
+    <header class="onb__head">
+      <h1 class="onb__title">{{ 'ONBOARDING.TITLE' | translate }}</h1>
+      <p class="onb__dek">{{ 'ONBOARDING.DEK' | translate }}</p>
+      @if (schema(); as sch) {
+        <ol class="onb__steps">
+          @for (st of sch.steps; track st.id) {
+            <li>
+              <span class="onb__step-title">{{ st.title }}</span>
+              @if (st.description) {
+                <span class="onb__step-dek">{{ st.description }}</span>
+              }
+            </li>
+          }
+        </ol>
+      }
+    </header>
+
+    @if (error(); as errKey) {
+      <p class="onb__err" role="alert">{{ errKey | translate }}</p>
+    }
+
+    @if (role() === 'professional') {
+      <form class="onb__form" [formGroup]="profForm" (ngSubmit)="submitProfessional()">
+        <fieldset class="onb__fieldset">
+          <legend>{{ 'ONBOARDING.PRO_PROFILE' | translate }}</legend>
+          <label class="onb__label">{{ 'ONBOARDING.FULL_NAME' | translate }}</label>
+          <input class="onb__input" formControlName="fullName" />
+          <label class="onb__label">{{ 'ONBOARDING.HEADLINE' | translate }}</label>
+          <input class="onb__input" formControlName="headline" />
+          <label class="onb__label">{{ 'ONBOARDING.LOCATION' | translate }}</label>
+          <input class="onb__input" formControlName="location" />
+          <label class="onb__label">{{ 'ONBOARDING.BIO' | translate }}</label>
+          <textarea class="onb__textarea" rows="3" formControlName="bio"></textarea>
+        </fieldset>
+        <fieldset class="onb__fieldset">
+          <legend>{{ 'ONBOARDING.AREAS' | translate }}</legend>
+          <p class="onb__hint">{{ 'ONBOARDING.AREAS_HINT' | translate }}</p>
+          <input class="onb__input" formControlName="areasRaw" />
+        </fieldset>
+        <fieldset class="onb__fieldset">
+          <legend>{{ 'ONBOARDING.SKILLS' | translate }}</legend>
+          <div formArrayName="skillRows">
+            @for (_ of skillRows.controls; track $index; let i = $index) {
+              <div class="onb__row" [formGroupName]="i">
+                <input class="onb__input onb__input--slug" formControlName="name" />
+                <select class="onb__select" formControlName="level">
+                  <option value="beginner">{{ 'ONBOARDING.LEVEL_BEGINNER' | translate }}</option>
+                  <option value="intermediate">{{ 'ONBOARDING.LEVEL_INTERMEDIATE' | translate }}</option>
+                  <option value="advanced">{{ 'ONBOARDING.LEVEL_ADVANCED' | translate }}</option>
+                </select>
+                @if (skillRows.length > 1) {
+                  <button type="button" class="onb__btn-ghost" (click)="removeSkillRow(i)">
+                    {{ 'ONBOARDING.REMOVE' | translate }}
+                  </button>
+                }
+              </div>
+            }
+          </div>
+          <button type="button" class="onb__btn-ghost" (click)="addSkillRow()">
+            {{ 'ONBOARDING.ADD_SKILL' | translate }}
+          </button>
+        </fieldset>
+        <fieldset class="onb__fieldset">
+          <legend>{{ 'ONBOARDING.GOAL' | translate }}</legend>
+          <input class="onb__input" formControlName="goal" />
+        </fieldset>
+        <fieldset class="onb__fieldset">
+          <legend>{{ 'ONBOARDING.WORK_PREF' | translate }}</legend>
+          <input class="onb__input" formControlName="workPreference" />
+        </fieldset>
+        <fieldset class="onb__fieldset">
+          <legend>{{ 'ONBOARDING.EXTRAS' | translate }}</legend>
+          <label class="onb__label">{{ 'ONBOARDING.COURSES' | translate }}</label>
+          <input class="onb__input" formControlName="coursesRaw" />
+          <label class="onb__label">{{ 'ONBOARDING.PORTFOLIO' | translate }}</label>
+          <input class="onb__input" formControlName="portfolioRaw" />
+        </fieldset>
+        <div class="onb__actions">
+          <button type="button" class="onb__btn-secondary" [disabled]="saving()" (click)="skip()">
+            {{ 'ONBOARDING.SKIP' | translate }}
+          </button>
+          <button type="submit" class="onb__btn-primary" [disabled]="saving()">
+            {{ saving() ? ('ONBOARDING.SAVING' | translate) : ('ONBOARDING.SUBMIT' | translate) }}
+          </button>
+        </div>
+      </form>
+    }
+
+    @if (role() === 'company') {
+      <form class="onb__form" [formGroup]="companyForm" (ngSubmit)="submitCompany()">
+        <fieldset class="onb__fieldset">
+          <legend>{{ 'ONBOARDING.CO_DATA' | translate }}</legend>
+          <label class="onb__label">{{ 'ONBOARDING.COMPANY_NAME' | translate }}</label>
+          <input class="onb__input" formControlName="companyName" />
+          <label class="onb__label">{{ 'ONBOARDING.CNPJ' | translate }}</label>
+          <input class="onb__input" formControlName="cnpj" />
+          <label class="onb__label">{{ 'ONBOARDING.WEBSITE' | translate }}</label>
+          <input class="onb__input" formControlName="website" />
+          <label class="onb__label">{{ 'ONBOARDING.INDUSTRY' | translate }}</label>
+          <input class="onb__input" formControlName="industry" />
+          <label class="onb__label">{{ 'ONBOARDING.SIZE' | translate }}</label>
+          <input class="onb__input" formControlName="companySize" />
+        </fieldset>
+        <fieldset class="onb__fieldset">
+          <legend>{{ 'ONBOARDING.CONTACT' | translate }}</legend>
+          <label class="onb__label">{{ 'ONBOARDING.CONTACT_NAME' | translate }}</label>
+          <input class="onb__input" formControlName="contactName" />
+          <label class="onb__label">{{ 'ONBOARDING.CONTACT_TITLE' | translate }}</label>
+          <input class="onb__input" formControlName="contactTitle" />
+        </fieldset>
+        <fieldset class="onb__fieldset">
+          <legend>{{ 'ONBOARDING.HIRING' | translate }}</legend>
+          <label class="onb__label">{{ 'ONBOARDING.HIRE_TYPES' | translate }}</label>
+          <input class="onb__input" formControlName="hireTypesRaw" />
+          <label class="onb__label">{{ 'ONBOARDING.WORK_POLICY' | translate }}</label>
+          <input class="onb__input" formControlName="workPolicy" />
+          <label class="onb__label">{{ 'ONBOARDING.LOCATIONS' | translate }}</label>
+          <textarea class="onb__textarea" rows="2" formControlName="officeLocations"></textarea>
+          <label class="onb__label">{{ 'ONBOARDING.APP_CHANNEL' | translate }}</label>
+          <input class="onb__input" formControlName="applicationChannel" />
+        </fieldset>
+        <fieldset class="onb__fieldset">
+          <legend>{{ 'ONBOARDING.PRIORITY_SKILLS' | translate }}</legend>
+          <p class="onb__hint">{{ 'ONBOARDING.SKILLS_HINT' | translate }}</p>
+          <input class="onb__input" formControlName="skillsRaw" />
+        </fieldset>
+        <div class="onb__actions">
+          <button type="button" class="onb__btn-secondary" [disabled]="saving()" (click)="skip()">
+            {{ 'ONBOARDING.SKIP' | translate }}
+          </button>
+          <button type="submit" class="onb__btn-primary" [disabled]="saving()">
+            {{ saving() ? ('ONBOARDING.SAVING' | translate) : ('ONBOARDING.SUBMIT' | translate) }}
+          </button>
+        </div>
+      </form>
+    }
+
+    <p class="onb__foot">
+      <a routerLink="/">{{ 'ONBOARDING.BACK_HOME' | translate }}</a>
+    </p>
+  }
+</div>
