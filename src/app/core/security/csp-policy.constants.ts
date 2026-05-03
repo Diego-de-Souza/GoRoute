@@ -1,26 +1,24 @@
 /**
- * Document CSP for `index.html` and `vercel.json` only (no runtime meta mutation).
+ * CSP aplicada só via `src/index.html` (meta). Não duplicar em header HTTP (ex.: Vercel) com texto
+ * diferente — várias CSPs ativas ao mesmo tempo fazem o navegador exigir todas; uma política
+ * antiga sem `'unsafe-inline'` continua a bloquear estilos.
  *
- * - **style-src** + **style-src-elem** + **style-src-attr**: CSP Level 3 splits `<style>` / linked
- *   CSS vs `style=""` updates; listing all three avoids engines that still enforce a stricter branch.
- * - **blob:** on style sources: inlined critical CSS / tooling may reference blob URLs.
- * - **script-src** includes `'unsafe-inline' 'unsafe-eval'` so `ng serve` (Vite) keeps working; the
- *   production bundle is still same-origin. Tighten on your final host via HTTP header if needed.
+ * Uma linha **`style-src`** (sem `style-src-elem` / `style-src-attr` separados): em CSP nível 3,
+ * alguns motores aplicam ramos de forma inconsistente; um único `style-src` cobre `<style>`
+ * inline do build e `style=""` (vis-network, Angular).
  *
- * Keep this string in sync with `src/index.html` and `vercel.json`.
+ * Inclui `https://fonts.gstatic.com`, `blob:` e `data:` para @font-face / subsets inlined pelo
+ * pipeline de build. `script-src` com `'unsafe-inline' 'unsafe-eval'` mantém `ng serve`.
  */
 export const GOROUTE_CSP_DOCUMENT = [
   "default-src 'self'",
   "base-uri 'self'",
   "object-src 'none'",
   "img-src 'self' data: blob:",
-  "font-src 'self' https://fonts.gstatic.com",
-  "style-src 'self' https://fonts.googleapis.com 'unsafe-inline' blob:",
-  "style-src-elem 'self' https://fonts.googleapis.com 'unsafe-inline' blob:",
-  "style-src-attr 'unsafe-inline'",
+  "font-src 'self' https://fonts.gstatic.com data:",
+  "style-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com 'unsafe-inline' blob: data:",
   "script-src 'self' 'unsafe-inline' 'unsafe-eval'",
-  "script-src-attr 'unsafe-inline'",
-  "connect-src 'self' https://api.open-meteo.com http: https: ws: wss:",
+  "connect-src 'self' https://api.open-meteo.com http: https: ws: wss: data: blob:",
   "frame-src 'none'",
   "worker-src 'self' blob:",
   "manifest-src 'self'",
